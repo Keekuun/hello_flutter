@@ -1,0 +1,30 @@
+hello_flutter
+©À©¤.dart_tool
+©À©¤android
+©À©¤build
+©¦  ©À©¤app
+©¦  ©À©¤eb252660989fa7edab11954eb6b4ebfb
+©¦  ©À©¤kotlin
+©¦  ©À©¤native_assets
+©¦  ©¸©¤unit_test_assets
+©À©¤ios
+©¦  ©À©¤Flutter
+©¦  ©À©¤Runner
+©¦  ©À©¤Runner.xcodeproj
+©¦  ©À©¤Runner.xcworkspace
+©¦  ©¸©¤RunnerTests
+©À©¤lib
+©À©¤linux
+©¦  ©¸©¤flutter
+©À©¤macos
+©¦  ©À©¤Flutter
+©¦  ©À©¤Runner
+©¦  ©À©¤Runner.xcodeproj
+©¦  ©À©¤Runner.xcworkspace
+©¦  ©¸©¤RunnerTests
+©À©¤test
+©À©¤web
+©¦  ©¸©¤icons
+©¸©¤windows
+    ©À©¤flutter
+    ©¸©¤runner
