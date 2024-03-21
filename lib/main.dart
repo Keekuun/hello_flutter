@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     String msg = "你好，拼音！";
     String pinyin = PinyinHelper.getPinyin(msg);
-    print('pinyin: $pinyin'); // pinyin: tian fu guang chang
+    print('pinyin: $pinyin'); // pinyin: ni hao，pinyin !
 
     return Scaffold(
       appBar: AppBar(
