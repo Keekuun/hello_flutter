@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/widgets/icon.dart';
 import 'package:pinyin/pinyin.dart';
 
 void main() {
@@ -131,6 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
               pinyin,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
+            const IconDemo(),
           ],
         ),
       ),
