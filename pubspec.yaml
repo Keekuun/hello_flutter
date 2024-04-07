@@ -36,7 +36,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  pinyin: ^3.2.0  #latest version
+  flutter_hooks: ^0.20.5
 
 
   # The following adds the Cupertino Icons font to your application.
