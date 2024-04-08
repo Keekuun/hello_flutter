@@ -3,6 +3,7 @@ import 'package:hello_flutter/contents/icon.dart';
 import 'package:hello_flutter/contents/rich_text.dart';
 import 'package:hello_flutter/contents/selectable_text.dart';
 import 'package:hello_flutter/contents/text.dart';
+import 'package:hello_flutter/layouts/container.dart';
 import 'package:hello_flutter/wrap_page.dart';
 
 import 'home_page.dart';
@@ -39,7 +40,13 @@ final List<Map<String, Object>> routesList = [
     'id': 'Layouts',
     'title': '布局组件',
     'icon': const Icon(Icons.layers_rounded),
-    'children': [],
+    'children': [
+      MyWidget(
+          id: 'Container',
+          title: '容器组件',
+          description: '容器组件',
+          widget: const ContainerDemo()),
+    ],
   },
   {
     'id': 'Lists',
