@@ -9,22 +9,10 @@ import 'home_page.dart';
 
 final Map<String, Map<String, WidgetBuilder>> routesMap = {
   'widgets': {
-    'Text': (BuildContext context) => const WrapPage(
-          title: '普通文本',
-          child: TextDemo(),
-        ),
-    'RichText': (BuildContext context) => const WrapPage(
-          title: '富文本',
-          child: RichTextDemo(),
-        ),
-    'SelectableText': (BuildContext context) => const WrapPage(
-          title: '可选文本',
-          child: SelectableTextDemo(),
-        ),
-    'Icon': (BuildContext context) => const WrapPage(
-          title: '内置图标',
-          child: IconDemo(),
-        ),
+    'Text': (BuildContext context) => const WrapPage(title: '普通文本', child: TextDemo(),),
+    'Icon': (BuildContext context) => const WrapPage( title: '内置图标',child: IconDemo(),),
+    'SelectableText': (BuildContext context) => const WrapPage(title: '可选文本',child: SelectableTextDemo(),),
+    'RichText': (BuildContext context) => const WrapPage(title: '富文本',child: RichTextDemo(),),
   },
 };
 
