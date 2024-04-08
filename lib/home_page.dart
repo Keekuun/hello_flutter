@@ -8,10 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         title: const Text(
           'hello flutter',
           style: TextStyle(color: Colors.white),
@@ -24,19 +21,38 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ListView(
-          children: routesMap.entries
-              .toList()
-              .map((d) =>
-              Column(children: [
-                Text(d.key),
-                ...d.value.entries.toList().map((e) => ListTile(
-                  title: Text(e.key),
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, '/${d.key}/${e.key}');
-                  },
-                )),
-              ]))
-              .toList(),
+          children: routesList.map((d) {
+            var id = d['id']! as String;
+            var title = d['title']! as String;
+            var icon = d['icon']! as Icon;
+            var children = d['children']! as List<dynamic>;
+            return Column(children: [
+              const SizedBox(
+                height: 20,
+              ),
+              Row(children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                icon,
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(title, style: Theme.of(context).textTheme.titleLarge)
+              ]),
+              ...children.map((e) => ListTile(
+                    title: Text(e.id.toString(),
+                        style: Theme.of(context).textTheme.bodyLarge),
+                    subtitle: Text(
+                      e.description.toString(),
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, '/$id/${e.id}');
+                    },
+                  )),
+            ]);
+          }).toList(),
         ),
       ),
       floatingActionButton: FloatingActionButton(

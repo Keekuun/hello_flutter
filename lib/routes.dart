@@ -1,33 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/widgets/icon.dart';
-import 'package:hello_flutter/widgets/rich_text.dart';
-import 'package:hello_flutter/widgets/selectable_text.dart';
-import 'package:hello_flutter/widgets/text.dart';
+import 'package:hello_flutter/contents/icon.dart';
+import 'package:hello_flutter/contents/rich_text.dart';
+import 'package:hello_flutter/contents/selectable_text.dart';
+import 'package:hello_flutter/contents/text.dart';
 import 'package:hello_flutter/wrap_page.dart';
 
 import 'home_page.dart';
 
-final Map<String, Map<String, WidgetBuilder>> routesMap = {
-  'widgets': {
-    'Text': (BuildContext context) => const WrapPage(title: '普通文本', child: TextDemo(),),
-    'Icon': (BuildContext context) => const WrapPage( title: '内置图标',child: IconDemo(),),
-    'SelectableText': (BuildContext context) => const WrapPage(title: '可选文本',child: SelectableTextDemo(),),
-    'RichText': (BuildContext context) => const WrapPage(title: '富文本',child: RichTextDemo(),),
+final List<Map<String, Object>> routesList = [
+  {
+    'id': 'Contents',
+    'title': '内容组件',
+    'icon': const Icon(Icons.widgets_rounded),
+    'children': [
+      MyWidget(
+          id: 'Text',
+          title: '普通文本',
+          description: '普通文本',
+          widget: const TextDemo()),
+      MyWidget(
+          id: 'Icon',
+          title: '内置图标',
+          description: '内置图标',
+          widget: const IconDemo()),
+      MyWidget(
+          id: 'SelectableText',
+          title: '可选文本',
+          description: '可选文本',
+          widget: const SelectableTextDemo()),
+      MyWidget(
+          id: 'RichText',
+          title: '富文本',
+          description: '富文本',
+          widget: const RichTextDemo()),
+    ]
   },
-};
+  {
+    'id': 'Layouts',
+    'title': '布局组件',
+    'icon': const Icon(Icons.layers_rounded),
+    'children': [],
+  },
+  {
+    'id': 'Lists',
+    'title': '列表组件',
+    'icon': const Icon(Icons.list_alt_rounded),
+    'children': [],
+  }
+];
 
-Map<String, WidgetBuilder> getRoutes() {
+class MyWidget {
+  final String id;
+  final String title; // 标题
+  final String? description; // 描述
+  final Widget widget; // 组件
+  late final WidgetBuilder child; // 子组件
+
+  MyWidget({
+    required this.id,
+    required this.title,
+    this.description = '',
+    required this.widget,
+  }) {
+    child = (BuildContext context) => WrapPage(
+          title: title,
+          child: widget,
+        );
+  }
+}
+
+Map<String, WidgetBuilder> _getRoutes() {
   final Map<String, WidgetBuilder> routes = {};
 
-  routesMap.forEach((category, values) {
-    values.forEach((path, widgetBuilder) {
-      routes['/$category/$path'] = widgetBuilder;
-    });
-  });
+  for (var d in routesList) {
+    final String category = d['id']! as String;
+    final List children = d['children']! as List;
+
+    for (var dd in children) {
+      routes['/$category/${dd.id}'] = dd.child as WidgetBuilder;
+    }
+  }
   return routes;
 }
 
 final Map<String, WidgetBuilder> routes = {
   '/': (BuildContext context) => const HomePage(),
-  ...getRoutes(),
+  ..._getRoutes(),
 };
