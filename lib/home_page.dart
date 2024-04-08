@@ -40,11 +40,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/');
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.star),
+        onPressed: () {},
+        tooltip: '菜单',
+        child: const Icon(Icons.menu),
       ),
     );
   }

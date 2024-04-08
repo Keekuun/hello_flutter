@@ -7,8 +7,8 @@ import 'home_page.dart';
 
 final Map<String, Map<String, WidgetBuilder>> routesMap = {
   'widgets': {
-    'icon': (BuildContext context) => const WrapPage(title: 'icon', description: 'icon', child: IconDemo(),),
-    'text': (BuildContext context) => const WrapPage(title: 'text', description: 'text', child: TextDemo(),),
+    'text': (BuildContext context) => const WrapPage(title: '普通文本', child: TextDemo(),),
+    'icon': (BuildContext context) => const WrapPage(title: '内置图标', child: IconDemo(),),
   },
 };
 

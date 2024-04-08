@@ -32,7 +32,10 @@ class WrapPage extends HookWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: child,
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: child
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
