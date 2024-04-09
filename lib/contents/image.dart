@@ -7,12 +7,13 @@ class ImageDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const url =
+    const netWorkImg =
         'https://pic2.zhimg.com/v2-639b49f2f6578eabddc458b84eb3c6a1.jpg';
+    const localeImg = 'assets/images/logo.webp';
 
     return Column(children: [
       const ListTile(title: Text('Image.asset-本地图片')),
-      Image.asset('assets/images/logo.png', width: 200),
+      Image.asset(localeImg, width: 200),
       const SizedBox(height: 20),
       const Divider(
         height: 20,
@@ -20,9 +21,9 @@ class ImageDemo extends StatelessWidget {
       const ListTile(title: Text('FadeInImage.assetNetwork-淡入效果')),
       FadeInImage.assetNetwork(
         width: 250,
-        placeholder: 'assets/images/logo.png',
+        placeholder: localeImg,
         // 占位符图片
-        image: url,
+        image: netWorkImg,
         // 要显示的图片
         imageErrorBuilder: (context, error, stackTrace) {
           return Container(
@@ -37,7 +38,7 @@ class ImageDemo extends StatelessWidget {
       ),
       const ListTile(title: Text('Image.network-网络图片')),
       Image.network(
-        url,
+        netWorkImg,
         width: 400,
         height: 200,
       ),
@@ -53,7 +54,7 @@ class ImageDemo extends StatelessWidget {
           color: Colors.lightGreenAccent,
           // 背景图片
           image: DecorationImage(
-            image: NetworkImage(url),
+            image: NetworkImage(netWorkImg),
             fit: BoxFit.contain,
           ),
           // 背景图片的模糊效果
@@ -71,11 +72,9 @@ class ImageDemo extends StatelessWidget {
       GestureDetector(
         onTap: () async {
           // 使用内部webView打开
-          await launchUrl(
-              Uri.parse('https://github.com/fluttercandies/extended_image'),
-              mode: LaunchMode.inAppWebView);
+          // await launchUrl(Uri.parse('https://github.com/fluttercandies/extended_image'),mode: LaunchMode.inAppWebView);
           // 使用外部浏览器打开
-          // await launchUrl(Uri.parse('https://github.com/fluttercandies/extended_image'), mode: LaunchMode.externalNonBrowserApplication);
+          await launchUrl(Uri.parse('https://github.com/fluttercandies/extended_image'), mode: LaunchMode.externalNonBrowserApplication);
         },
         child: const Text(
           '使用第三方库：extended_image',
@@ -87,7 +86,7 @@ class ImageDemo extends StatelessWidget {
         ),
       ),
       ExtendedImage.network(
-        url,
+        netWorkImg,
         width: 200,
         height: 200,
         fit: BoxFit.fill,
