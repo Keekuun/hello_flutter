@@ -37,6 +37,8 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
+  extended_image: ^8.2.0
+  url_launcher: ^6.2.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -100,3 +102,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+  assets:
+    - assets/images/

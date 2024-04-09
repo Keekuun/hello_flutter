@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/contents/icon.dart';
-import 'package:hello_flutter/contents/rich_text.dart';
-import 'package:hello_flutter/contents/selectable_text.dart';
-import 'package:hello_flutter/contents/text.dart';
-import 'package:hello_flutter/contents/text_field.dart';
-import 'package:hello_flutter/layouts/container.dart';
-import 'package:hello_flutter/wrap_page.dart';
+import 'contents/icon.dart';
+import 'contents/image.dart';
+import 'contents/rich_text.dart';
+import 'contents/selectable_text.dart';
+import 'contents/text.dart';
+import 'contents/text_field.dart';
+import 'layouts/container.dart';
+import 'wrap_page.dart';
 
 import 'home_page.dart';
 
@@ -25,6 +26,11 @@ final List<Map<String, Object>> routesList = [
           title: '内置图标',
           description: '内置图标',
           widget: const IconDemo()),
+      MyWidget(
+          id: 'Image',
+          title: '图片',
+          description: '图片展示',
+          widget: const ImageDemo()),
       MyWidget(
           id: 'SelectableText',
           title: '可选文本',
