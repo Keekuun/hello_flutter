@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                     onTap: () {
-                      Navigator.pushReplacementNamed(context, '/$id/${e.id}');
+                      Navigator.pushNamed(context, '/$id/${e.id}');
                     },
                   )),
             ]);

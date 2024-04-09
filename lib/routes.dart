@@ -3,6 +3,7 @@ import 'package:hello_flutter/contents/icon.dart';
 import 'package:hello_flutter/contents/rich_text.dart';
 import 'package:hello_flutter/contents/selectable_text.dart';
 import 'package:hello_flutter/contents/text.dart';
+import 'package:hello_flutter/contents/text_field.dart';
 import 'package:hello_flutter/layouts/container.dart';
 import 'package:hello_flutter/wrap_page.dart';
 
@@ -34,6 +35,11 @@ final List<Map<String, Object>> routesList = [
           title: '富文本',
           description: '富文本',
           widget: const RichTextDemo()),
+      MyWidget(
+          id: 'TextField',
+          title: '输入框',
+          description: '输入框',
+          widget: const TextFieldDemo()),
     ]
   },
   {

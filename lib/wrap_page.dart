@@ -27,7 +27,7 @@ class WrapPage extends HookWidget {
         ),
         leading: IconButton(
           icon: const Icon(Icons.home, color: Colors.white,), onPressed: () {
-          Navigator.pushReplacementNamed(context, '/');
+          Navigator.pop(context);
         },
         ),
       ),
@@ -39,10 +39,10 @@ class WrapPage extends HookWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/');
+          Navigator.pop(context);
         },
-        tooltip: 'Increment',
-        child: const Icon(Icons.star),
+        tooltip: '返回',
+        child: const Icon(Icons.arrow_back_ios_new),
       ),
     );
   }
