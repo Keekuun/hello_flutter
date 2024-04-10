@@ -9,7 +9,7 @@ class ImageDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     const netWorkImg =
         'https://pic2.zhimg.com/v2-639b49f2f6578eabddc458b84eb3c6a1.jpg';
-    const localeImg = 'assets/images/logo.webp';
+    const localeImg = 'assets/images/logo.jpg';
 
     return Column(children: [
       const ListTile(title: Text('Image.asset-本地图片')),
