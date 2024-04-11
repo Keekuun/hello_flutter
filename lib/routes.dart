@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/contents/button.dart';
 import 'contents/icon.dart';
 import 'contents/image.dart';
 import 'contents/rich_text.dart';
@@ -26,6 +27,11 @@ final List<Map<String, Object>> routesList = [
           title: '内置图标',
           description: '内置图标',
           widget: const IconDemo()),
+      MyWidget(
+          id: 'Button',
+          title: '按钮',
+          description: '按钮',
+          widget: const ButtonDemo()),
       MyWidget(
           id: 'Image',
           title: '图片',
