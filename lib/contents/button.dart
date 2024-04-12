@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:like_button/like_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ButtonDemo extends StatelessWidget {
@@ -119,6 +120,21 @@ class ButtonDemo extends StatelessWidget {
               "禁用",
               style: TextStyle(color: Colors.grey),
             ),
+          ),
+        ],
+      ),
+      const Divider(),
+      Row(
+        children: [
+          const LikeButton(
+            size: 32,
+            likeCount: 99,
+          ),
+          const SizedBox(width: 10,),
+          LikeButton(
+            likeCount: 99,
+            likeCountAnimationType: LikeCountAnimationType.all,
+            likeBuilder: (isLiked) => const Icon(Icons.thumb_up, color: Colors.redAccent, size: 32,),
           ),
         ],
       )
