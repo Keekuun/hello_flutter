@@ -12,14 +12,14 @@ class ButtonDemo extends StatelessWidget {
       TextButton(
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Yay! A SnackBar!')));
+                const SnackBar(content: Text('hello flutter button')));
           },
-          child: const Text('文本按钮-默认主题')),
+          child: const Text('文本按钮-snackBar')),
       const TextButton(onPressed: null, child: Text('文本按钮禁用')),
       TextButton(
           onPressed: () {
             Fluttertoast.showToast(
-                msg: "This is Center Short Toast",
+                msg: "hello flutter button",
                 toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.CENTER,
                 timeInSecForIosWeb: 1,
@@ -27,7 +27,7 @@ class ButtonDemo extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0);
           },
-          child: const Text('文本按钮-修改颜色', style: TextStyle(color: Colors.blue))),
+          child: const Text('文本按钮-Toast', style: TextStyle(color: Colors.blue))),
       TextButton(
         onPressed: () {
           launchUrl(Uri.parse('https://flutter.cn/'));
@@ -58,8 +58,11 @@ class ButtonDemo extends StatelessWidget {
       const SizedBox(width: 10),
       ElevatedButton(
           onPressed: () {},
+          // style: ElevatedButton.styleFrom(
+          //   foregroundColor: Colors.white, backgroundColor: Colors.blue, //文本颜色
+          // ),
           style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(Colors.blue)),
+              backgroundColor: MaterialStateProperty.all(Colors.blue)),
           child: const Text('阴影按钮2', style: TextStyle(color: Colors.white))),
       const SizedBox(width: 10),
       const ElevatedButton(onPressed: null, child: Text('禁用')),
@@ -68,6 +71,8 @@ class ButtonDemo extends StatelessWidget {
         height: 100,
         width: double.infinity,
         child: FloatingActionButton(
+          // There are multiple heroes that share the same tag within a subtree.
+          heroTag: '1',
           elevation: 20,
           tooltip: '浮动按钮, 改变尺寸',
           onPressed: () {},
