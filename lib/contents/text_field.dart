@@ -14,6 +14,7 @@ class TextFieldDemo extends HookWidget {
       'phone': 12345678901,
       'email': 'demo@123.com',
       'password': '',
+      'description': '',
     });
 
     final passwordVisible = useState<bool>(false);
@@ -23,6 +24,7 @@ class TextFieldDemo extends HookWidget {
     final phoneController = useTextEditingController();
     final emailController = useTextEditingController();
     final passwordController = useTextEditingController();
+    final descriptionController = useTextEditingController();
 
     nameController.value = TextEditingValue(text: myForm.value['name']);
     ageController.value =
@@ -31,6 +33,7 @@ class TextFieldDemo extends HookWidget {
         TextEditingValue(text: myForm.value['phone'].toString());
     emailController.value = TextEditingValue(text: myForm.value['email']);
     passwordController.value = TextEditingValue(text: myForm.value['password']);
+    descriptionController.value = TextEditingValue(text: myForm.value['description']);
 
     useEffect(
         () => () {
@@ -119,8 +122,8 @@ class TextFieldDemo extends HookWidget {
         const SizedBox(height: 20),
         TextField(
           keyboardType: TextInputType.text,
-          controller: passwordController,
-          onChanged: (value) => myForm.value['password'] = value,
+          controller: descriptionController,
+          onChanged: (value) => myForm.value['description'] = value,
           minLines: 4,
           maxLines: 6,
           decoration: InputDecoration(
@@ -129,7 +132,7 @@ class TextFieldDemo extends HookWidget {
               hintText: '多行输入框,带清空功能',
               suffixIcon: IconButton(
                   onPressed: () {
-                    passwordController.clear();
+                    descriptionController.clear();
                   },
                   icon: const Icon(Icons.clear, color: Colors.blue, size: 24))),
         ),

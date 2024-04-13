@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/contents/button.dart';
+import 'contents/button.dart';
+import 'contents/form.dart';
 import 'contents/icon.dart';
 import 'contents/image.dart';
 import 'contents/rich_text.dart';
@@ -50,8 +51,13 @@ final List<Map<String, Object>> routesList = [
       MyWidget(
           id: 'TextField',
           title: '输入框',
-          description: '输入框',
+          description: '普通输入框',
           widget: const TextFieldDemo()),
+      MyWidget(
+          id: 'Form',
+          title: '表单',
+          description: '表单-表单文本输入框',
+          widget: FormDemo()),
     ]
   },
   {
