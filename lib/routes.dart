@@ -57,7 +57,7 @@ final List<Map<String, Object>> routesList = [
           id: 'Form',
           title: '表单',
           description: '表单-表单文本输入框',
-          widget: FormDemo()),
+          widget: const FormDemo()),
     ]
   },
   {
@@ -67,6 +67,21 @@ final List<Map<String, Object>> routesList = [
     'children': [
       MyWidget(
           id: 'Container',
+          title: '容器组件',
+          description: '容器组件',
+          widget: const ContainerDemo()),
+      MyWidget(
+          id: 'Row',
+          title: '容器组件',
+          description: '容器组件',
+          widget: const ContainerDemo()),
+      MyWidget(
+          id: 'Column',
+          title: '容器组件',
+          description: '容器组件',
+          widget: const ContainerDemo()),
+      MyWidget(
+          id: 'Grid',
           title: '容器组件',
           description: '容器组件',
           widget: const ContainerDemo()),
