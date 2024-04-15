@@ -8,6 +8,7 @@ import 'contents/rich_text.dart';
 import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
+import 'layouts/column.dart';
 import 'layouts/container.dart';
 import 'wrap_page.dart';
 
@@ -80,7 +81,7 @@ final List<Map<String, Object>> routesList = [
           id: 'Column',
           title: 'Column容器',
           description: 'Column组件-垂直布局',
-          widget: const ContainerDemo()),
+          widget: const ColumnDemo()),
       MyWidget(
           id: 'Grid',
           title: 'Grid容器',

@@ -2,14 +2,14 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-class RowDemo extends StatefulWidget {
-  const RowDemo({super.key});
+class ColumnDemo extends StatefulWidget {
+  const ColumnDemo({super.key});
 
   @override
-  State<RowDemo> createState() => _RowDemoState();
+  State<ColumnDemo> createState() => _ColumnDemoState();
 }
 
-class _RowDemoState extends State<RowDemo> {
+class _ColumnDemoState extends State<ColumnDemo> {
   MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start;
   MainAxisSize mainAxisSize = MainAxisSize.max;
   CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.center;
@@ -35,17 +35,16 @@ class _RowDemoState extends State<RowDemo> {
       child: Column(
         children: [
           Container(
-            height: 300,
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-            ),
+            height: 400,
+            color: Colors.grey,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Container(
-                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  height: 300,
                   decoration: const BoxDecoration(
-                    // color: Color.fromRGBO(120, 120, 120, 0.8),
+                    color: Color.fromRGBO(120, 120, 120, 0.8),
                     gradient: LinearGradient(
                       // 颜色从左到右渐变
                       begin: Alignment.centerLeft,
@@ -56,39 +55,41 @@ class _RowDemoState extends State<RowDemo> {
                       ],
                     ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: mainAxisAlignment,
-                    crossAxisAlignment: crossAxisAlignment,
-                    mainAxisSize: mainAxisSize,
-                    // CrossAxisAlignment 为 baseline 时，必须设置 textBaseline
-                    textBaseline:
-                        crossAxisAlignment == CrossAxisAlignment.baseline
-                            ? TextBaseline.alphabetic
-                            : null,
-                    children: [
-                      Container(
-                        width: 50,
-                        height: 100,
-                        decoration:
-                            const BoxDecoration(color: Colors.redAccent),
-                      ),
-                      Container(
-                        width: 50,
-                        height: 150,
-                        decoration:
-                            const BoxDecoration(color: Colors.blueAccent),
-                      ),
-                      Container(
-                        width: 50,
-                        height: 120,
-                        decoration:
-                            const BoxDecoration(color: Colors.greenAccent),
-                      ),
-                      const Text(
-                        'row demo',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: mainAxisAlignment,
+                      crossAxisAlignment: crossAxisAlignment,
+                      mainAxisSize: mainAxisSize,
+                      // CrossAxisAlignment 为 baseline 时，必须设置 textBaseline
+                      textBaseline:
+                          crossAxisAlignment == CrossAxisAlignment.baseline
+                              ? TextBaseline.alphabetic
+                              : null,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 50,
+                          decoration:
+                              const BoxDecoration(color: Colors.redAccent),
+                        ),
+                        Container(
+                          width: 150,
+                          height: 50,
+                          decoration:
+                              const BoxDecoration(color: Colors.blueAccent),
+                        ),
+                        Container(
+                          width: 120,
+                          height: 50,
+                          decoration:
+                              const BoxDecoration(color: Colors.greenAccent),
+                        ),
+                        const Text(
+                          'row demo',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
                   ),
                 )
               ],
