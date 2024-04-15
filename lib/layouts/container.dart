@@ -21,7 +21,7 @@ class ContainerDemo extends HookWidget {
               spreadRadius: 5,
             )
           ],
-          gradient: LinearGradient(colors: <Color>[
+          gradient: const LinearGradient(colors: <Color>[
             Colors.blueAccent,
             Colors.greenAccent,
           ])),

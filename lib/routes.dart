@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/layouts/row.dart';
 import 'contents/button.dart';
 import 'contents/form.dart';
 import 'contents/icon.dart';
@@ -20,43 +21,43 @@ final List<Map<String, Object>> routesList = [
     'children': [
       MyWidget(
           id: 'Text',
-          title: '普通文本',
-          description: '普通文本',
+          title: 'Text普通文本',
+          description: 'Text-普通文本',
           widget: const TextDemo()),
       MyWidget(
           id: 'Icon',
-          title: '内置图标',
-          description: '内置图标',
+          title: 'Icon内置图标',
+          description: 'Icon-内置图标',
           widget: const IconDemo()),
       MyWidget(
           id: 'Button',
-          title: '按钮',
-          description: '按钮',
+          title: 'Button按钮',
+          description: 'Button-按钮',
           widget: const ButtonDemo()),
       MyWidget(
           id: 'Image',
-          title: '图片',
-          description: '图片展示',
+          title: 'Image图片',
+          description: 'Image-图片展示',
           widget: const ImageDemo()),
       MyWidget(
           id: 'SelectableText',
-          title: '可选文本',
-          description: '可选文本',
+          title: 'SelectableText可选文本',
+          description: 'SelectableText-可选文本',
           widget: const SelectableTextDemo()),
       MyWidget(
           id: 'RichText',
-          title: '富文本',
-          description: '富文本',
+          title: 'RichText富文本',
+          description: 'RichText-富文本',
           widget: const RichTextDemo()),
       MyWidget(
           id: 'TextField',
-          title: '输入框',
-          description: '普通输入框',
+          title: 'TextField输入框',
+          description: 'TextField-普通输入框',
           widget: const TextFieldDemo()),
       MyWidget(
           id: 'Form',
-          title: '表单',
-          description: '表单-表单文本输入框',
+          title: 'Form表单',
+          description: 'Form表单-表单文本输入框',
           widget: const FormDemo()),
     ]
   },
@@ -67,23 +68,23 @@ final List<Map<String, Object>> routesList = [
     'children': [
       MyWidget(
           id: 'Container',
-          title: '容器组件',
-          description: '容器组件',
+          title: 'Container容器',
+          description: 'Container容器-默认撑满屏幕',
           widget: const ContainerDemo()),
       MyWidget(
           id: 'Row',
-          title: '容器组件',
-          description: '容器组件',
-          widget: const ContainerDemo()),
+          title: 'Row容器',
+          description: 'Row容器组件-水平布局',
+          widget: const RowDemo()),
       MyWidget(
           id: 'Column',
-          title: '容器组件',
-          description: '容器组件',
+          title: 'Column容器',
+          description: 'Column组件-垂直布局',
           widget: const ContainerDemo()),
       MyWidget(
           id: 'Grid',
-          title: '容器组件',
-          description: '容器组件',
+          title: 'Grid容器',
+          description: 'Grid组件-网格布局',
           widget: const ContainerDemo()),
     ],
   },
