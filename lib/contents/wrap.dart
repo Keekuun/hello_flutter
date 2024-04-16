@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class WrapDemo extends StatelessWidget {
   const WrapDemo({super.key});
-
   @override
   Widget build(BuildContext context) {
+    const localeImg = 'assets/images/logo.jpg';
+
     return Wrap(spacing: 10, runSpacing: 10, children: [
+      Image.asset(localeImg, width: 100),
       const Chip(
         label: Text('wrap chip'),
         elevation: 5,

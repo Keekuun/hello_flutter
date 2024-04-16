@@ -62,7 +62,7 @@ class ButtonDemo extends StatelessWidget {
           //   foregroundColor: Colors.white, backgroundColor: Colors.blue, //文本颜色
           // ),
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue)),
+              backgroundColor: WidgetStateProperty.all(Colors.blue)),
           child: const Text('阴影按钮2', style: TextStyle(color: Colors.white))),
       const SizedBox(width: 10),
       const ElevatedButton(onPressed: null, child: Text('禁用')),
