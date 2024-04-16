@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/lists/grid.dart';
-import 'package:hello_flutter/layouts/row.dart';
+import 'lists/grid.dart';
+import 'layouts/row.dart';
+import 'states/blocs/cubit_counter/counter_page.dart';
 import 'contents/button.dart';
 import 'contents/form.dart';
 import 'contents/icon.dart';
@@ -12,6 +13,7 @@ import 'contents/text_field.dart';
 import 'contents/wrap.dart';
 import 'layouts/column.dart';
 import 'layouts/container.dart';
+import 'states/blocs/bloc_counter/counter_page.dart';
 import 'wrap_page.dart';
 
 import 'home_page.dart';
@@ -101,6 +103,23 @@ final List<Map<String, Object>> routesList = [
           title: 'GridList列表',
           description: 'GridList-网格列表',
           widget: const GridDemo()),
+    ],
+  },
+  {
+    'id': 'States',
+    'title': '状态管理',
+    'icon': const Icon(Icons.recycling_rounded),
+    'children': [
+      MyWidget(
+          id: 'Bloc-Cubit',
+          title: 'Bloc-Cubit状态管理',
+          description: 'Bloc-Cubit状态管理',
+          widget: const CounterCubitPage()),
+      MyWidget(
+          id: 'Bloc',
+          title: 'Bloc状态管理',
+          description: 'Bloc状态管理',
+          widget: const CounterBlocPage()),
     ],
   }
 ];
