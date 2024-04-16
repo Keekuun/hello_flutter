@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'routes.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  // whenever your initialization is completed, remove the splash screen:
+  FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
 
@@ -15,6 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'hello flutter',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        splashColor: Colors.transparent,
         colorScheme: ColorScheme.light(
             surface: Colors.grey.shade200,
             onSurface: Colors.black,

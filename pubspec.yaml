@@ -46,6 +46,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   # 默认加载的IOS图标
   cupertino_icons: ^1.0.6
+  flutter_native_splash: ^2.4.0
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
