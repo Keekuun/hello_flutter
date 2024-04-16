@@ -85,7 +85,7 @@ class _ColumnDemoState extends State<ColumnDemo> {
                               const BoxDecoration(color: Colors.greenAccent),
                         ),
                         const Text(
-                          'row demo',
+                          'column demo',
                           style: TextStyle(color: Colors.white),
                         ),
                       ],

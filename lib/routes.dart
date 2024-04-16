@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/lists/grid.dart';
 import 'package:hello_flutter/layouts/row.dart';
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -8,6 +9,7 @@ import 'contents/rich_text.dart';
 import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
+import 'contents/wrap.dart';
 import 'layouts/column.dart';
 import 'layouts/container.dart';
 import 'wrap_page.dart';
@@ -68,6 +70,11 @@ final List<Map<String, Object>> routesList = [
     'icon': const Icon(Icons.layers_rounded),
     'children': [
       MyWidget(
+          id: 'Wrap',
+          title: 'Wrap组件',
+          description: 'Wrap组件-自动换行',
+          widget: const WrapDemo()),
+      MyWidget(
           id: 'Container',
           title: 'Container容器',
           description: 'Container容器-默认撑满屏幕',
@@ -82,18 +89,19 @@ final List<Map<String, Object>> routesList = [
           title: 'Column容器',
           description: 'Column组件-垂直布局',
           widget: const ColumnDemo()),
-      MyWidget(
-          id: 'Grid',
-          title: 'Grid容器',
-          description: 'Grid组件-网格布局',
-          widget: const ContainerDemo()),
     ],
   },
   {
     'id': 'Lists',
     'title': '列表组件',
     'icon': const Icon(Icons.list_alt_rounded),
-    'children': [],
+    'children': [
+      MyWidget(
+          id: 'GridList',
+          title: 'GridList列表',
+          description: 'GridList-网格列表',
+          widget: const GridDemo()),
+    ],
   }
 ];
 
