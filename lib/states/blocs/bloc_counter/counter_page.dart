@@ -33,7 +33,6 @@ class CounterView extends StatelessWidget {
             children: <Widget>[
           const Text('You have pushed the button this many times:'),
           BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
-            // 使用圆形包裹
             return Chip(
                 label: Text('${state.msg}: ${state.count}'),
                 avatar: const Icon(Icons.favorite));

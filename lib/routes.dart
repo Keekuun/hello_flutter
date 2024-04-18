@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'lists/grid.dart';
 import 'layouts/row.dart';
+import 'others/lifecycle1.dart';
+import 'others/lifecycle2.dart';
+import 'others/lifecycle3.dart';
 import 'states/blocs/cubit_counter/counter_page.dart';
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -120,6 +123,28 @@ final List<Map<String, Object>> routesList = [
           title: 'Bloc状态管理',
           description: 'Bloc状态管理',
           widget: const CounterBlocPage()),
+    ],
+  },
+  {
+    'id': 'Others',
+    'title': '其他',
+    'icon': const Icon(Icons.more_horiz_rounded),
+    'children': [
+      MyWidget(
+          id: 'Lifecycle1',
+          title: '生命周期测试1',
+          description: '生命周期测试1',
+          widget: const LifecycleDemo1()),
+      MyWidget(
+          id: 'Lifecycle2',
+          title: '生命周期测试2',
+          description: '生命周期测试2',
+          widget: const LifecycleDemo2()),
+      MyWidget(
+          id: 'Lifecycle3',
+          title: '生命周期测试3',
+          description: '生命周期测试3',
+          widget: const LifecycleDemo3()),
     ],
   }
 ];
