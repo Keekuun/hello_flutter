@@ -27,7 +27,8 @@ class ButtonDemo extends StatelessWidget {
                 textColor: Colors.white,
                 fontSize: 16.0);
           },
-          child: const Text('文本按钮-Toast', style: TextStyle(color: Colors.blue))),
+          child:
+              const Text('文本按钮-Toast', style: TextStyle(color: Colors.blue))),
       TextButton(
         onPressed: () {
           launchUrl(Uri.parse('https://flutter.cn/'));
@@ -62,7 +63,7 @@ class ButtonDemo extends StatelessWidget {
           //   foregroundColor: Colors.white, backgroundColor: Colors.blue, //文本颜色
           // ),
           style: ButtonStyle(
-              backgroundColor: WidgetStateProperty.all(Colors.blue)),
+              backgroundColor: MaterialStateProperty.all(Colors.blue)),
           child: const Text('阴影按钮2', style: TextStyle(color: Colors.white))),
       const SizedBox(width: 10),
       const ElevatedButton(onPressed: null, child: Text('禁用')),
@@ -135,11 +136,17 @@ class ButtonDemo extends StatelessWidget {
             size: 32,
             likeCount: 99,
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           LikeButton(
             likeCount: 99,
             likeCountAnimationType: LikeCountAnimationType.all,
-            likeBuilder: (isLiked) => const Icon(Icons.thumb_up, color: Colors.redAccent, size: 32,),
+            likeBuilder: (isLiked) => const Icon(
+              Icons.thumb_up,
+              color: Colors.redAccent,
+              size: 32,
+            ),
           ),
         ],
       )

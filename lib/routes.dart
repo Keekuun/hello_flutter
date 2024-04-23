@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/layouts/expanded.dart';
 import 'package:hello_flutter/layouts/stack.dart';
+import 'package:hello_flutter/lists/list.dart';
 
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -113,6 +114,11 @@ final List<Map<String, Object>> routesList = [
     'title': '列表组件',
     'icon': const Icon(Icons.list_alt_rounded),
     'children': [
+      MyWidget(
+          id: 'ListView',
+          title: 'ListView列表',
+          description: 'ListView-列表',
+          widget: const ListViewDemo()),
       MyWidget(
           id: 'GridList',
           title: 'GridList列表',
