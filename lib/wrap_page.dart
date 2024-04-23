@@ -41,7 +41,12 @@ class WrapPage extends HookWidget {
               decoration: const BoxDecoration(
                 color: Color.fromRGBO(255, 255, 255, 1.0),
               ),
-              child: child),
+              constraints: BoxConstraints(
+                  minWidth: MediaQuery.of(context).size.width,
+                  minHeight: MediaQuery.of(context).size.height -
+                      kToolbarHeight -
+                      kBottomNavigationBarHeight),
+              child: Center(child: child)),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {

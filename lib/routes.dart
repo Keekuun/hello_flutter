@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/layouts/expanded.dart';
 import 'package:hello_flutter/layouts/stack.dart';
 
 import 'contents/button.dart';
@@ -100,6 +101,11 @@ final List<Map<String, Object>> routesList = [
           title: 'Stack容器',
           description: 'Stack组件-堆叠布局',
           widget: const StackDemo()),
+      MyWidget(
+          id: 'Expanded',
+          title: 'Expanded容器',
+          description: 'Expanded组件-自动填充',
+          widget: const ExpandedDemo()),
     ],
   },
   {
