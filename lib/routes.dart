@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'lists/grid.dart';
-import 'layouts/row.dart';
-import 'others/lifecycle1.dart';
-import 'others/lifecycle2.dart';
-import 'others/lifecycle3.dart';
-import 'states/blocs/cubit_counter/counter_page.dart';
+import 'package:hello_flutter/layouts/stack.dart';
+
 import 'contents/button.dart';
 import 'contents/form.dart';
 import 'contents/icon.dart';
@@ -13,13 +9,18 @@ import 'contents/rich_text.dart';
 import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
-import 'contents/wrap.dart';
+import 'home_page.dart';
 import 'layouts/column.dart';
 import 'layouts/container.dart';
+import 'layouts/row.dart';
+import 'layouts/wrap.dart';
+import 'lists/grid.dart';
+import 'others/lifecycle1.dart';
+import 'others/lifecycle2.dart';
+import 'others/lifecycle3.dart';
 import 'states/blocs/bloc_counter/counter_page.dart';
+import 'states/blocs/cubit_counter/counter_page.dart';
 import 'wrap_page.dart';
-
-import 'home_page.dart';
 
 final List<Map<String, Object>> routesList = [
   {
@@ -94,6 +95,11 @@ final List<Map<String, Object>> routesList = [
           title: 'Column容器',
           description: 'Column组件-垂直布局',
           widget: const ColumnDemo()),
+      MyWidget(
+          id: 'Stack',
+          title: 'Stack容器',
+          description: 'Stack组件-堆叠布局',
+          widget: const StackDemo()),
     ],
   },
   {
