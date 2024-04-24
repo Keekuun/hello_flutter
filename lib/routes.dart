@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hello_flutter/layouts/expanded.dart';
-import 'package:hello_flutter/layouts/stack.dart';
-import 'package:hello_flutter/lists/list.dart';
 
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -14,10 +11,12 @@ import 'contents/text_field.dart';
 import 'home_page.dart';
 import 'layouts/column.dart';
 import 'layouts/container.dart';
+import 'layouts/expanded.dart';
 import 'layouts/row.dart';
+import 'layouts/stack.dart';
 import 'layouts/wrap.dart';
 import 'lists/grid.dart';
-import 'lists/list1.dart';
+import 'lists/list.dart';
 import 'others/lifecycle1.dart';
 import 'others/lifecycle2.dart';
 import 'others/lifecycle3.dart';
@@ -125,11 +124,6 @@ final List<Map<String, Object>> routesList = [
           title: 'GridList列表',
           description: 'GridList-网格列表',
           widget: const GridDemo()),
-      MyWidget(
-          id: 'ListViewDemoPage',
-          title: 'ListViewDemoPage',
-          description: 'ListViewDemoPage-网格列表',
-          widget: const ListViewDemoPage()),
     ],
   },
   {
