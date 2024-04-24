@@ -8,6 +8,7 @@ import 'contents/rich_text.dart';
 import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
+import 'demo/todo_list/page.dart';
 import 'home_page.dart';
 import 'layouts/column.dart';
 import 'layouts/container.dart';
@@ -145,7 +146,7 @@ final List<Map<String, Object>> routesList = [
   },
   {
     'id': 'Others',
-    'title': '其他',
+    'title': '其他组件',
     'icon': const Icon(Icons.more_horiz_rounded),
     'children': [
       MyWidget(
@@ -164,6 +165,19 @@ final List<Map<String, Object>> routesList = [
           description: '生命周期测试3',
           widget: const LifecycleDemo3()),
     ],
+  },
+  {
+    'id': 'Demo',
+    'title': '练习案例',
+    'icon': const Icon(Icons.assessment_rounded),
+    'children': [
+      MyWidget(
+        id: 'todo_list',
+        title: 'TodoList案例',
+        description: 'TodoList案例',
+        widget: const TodoListDemo(),
+      )
+    ]
   }
 ];
 

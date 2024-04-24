@@ -10,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int currentIndex = -1;
   final ScrollController _scrollController = ScrollController();
   late ListObserverController _observerController;
 
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
     _observerController = ListObserverController(controller: _scrollController)
       ..initialIndexModel = ObserverIndexPositionModel(
-        index: routesList.length,
+        index: routesList.length - 1, // 默认定位到最后一个
       );
   }
 
@@ -44,52 +45,19 @@ class _HomePageState extends State<HomePage> {
         // },
         // ),
       ),
-      // body: Center(
-      //   child: ListViewObserver(
-      //     child: ListView(
-      //       controller: _scrollController,
-      //       children: routesList.map((d) {
-      //         var id = d['id']! as String;
-      //         var title = d['title']! as String;
-      //         var icon = d['icon']! as Icon;
-      //         var children = d['children']! as List<dynamic>;
-      //         return Column(children: [
-      //           const SizedBox(
-      //             height: 20,
-      //           ),
-      //           Row(children: [
-      //             const SizedBox(
-      //               width: 10,
-      //             ),
-      //             icon,
-      //             const SizedBox(
-      //               width: 10,
-      //             ),
-      //             Text(title, style: Theme.of(context).textTheme.titleLarge)
-      //           ]),
-      //           ...children.map((e) => ListTile(
-      //                 title: Text(e.id.toString(),
-      //                     style: Theme.of(context).textTheme.bodyLarge),
-      //                 subtitle: Text(
-      //                   e.description.toString(),
-      //                   style: Theme.of(context).textTheme.bodySmall,
-      //                 ),
-      //                 onTap: () {
-      //                   Navigator.pushNamed(context, '/$id/${e.id}');
-      //                 },
-      //               )),
-      //         ]);
-      //       }).toList(),
-      //     ),
-      //   ),
-      // ),
       body: ListViewObserver(
         autoTriggerObserveTypes: const [
-          ObserverAutoTriggerObserveType.scrollEnd,
+          // ObserverAutoTriggerObserveType.scrollUpdate,
+          ObserverAutoTriggerObserveType.scrollStart,
         ],
         triggerOnObserveType: ObserverTriggerOnObserveType.directly,
         controller: _observerController,
-        onObserve: (resultModel) {},
+        onObserve: (resultModel) {
+          // log(resultModel.displayingChildIndexList.toString());
+          setState(() {
+            currentIndex = resultModel.displayingChildIndexList.last;
+          });
+        },
         child: _buildListView(),
       ),
       floatingActionButton: FloatingActionButton(
@@ -97,7 +65,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: null,
         child: PopupMenuButton(
             tooltip: '菜单',
-            color: Colors.black87,
+            color: Colors.black54,
             icon: const Icon(Icons.menu),
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -112,20 +80,28 @@ class _HomePageState extends State<HomePage> {
                 return PopupMenuItem(
                     value: id,
                     onTap: () {
-                      _observerController.animateTo(
+                      _observerController
+                          .animateTo(
                         index: index,
                         duration: const Duration(seconds: 1),
                         curve: Curves.easeIn,
-                      );
+                      )
+                          .then((value) {
+                        setState(() {
+                          currentIndex = index;
+                        });
+                      });
                     },
                     child: Row(children: [
-                      icon,
+                      Icon(icon.icon, color: Colors.redAccent),
                       const SizedBox(
                         width: 10,
                       ),
                       Text(title,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 18))
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(color: Colors.redAccent)),
                     ]));
               }).toList();
             }),
@@ -136,7 +112,9 @@ class _HomePageState extends State<HomePage> {
   ListView _buildListView() {
     return ListView(
       controller: _scrollController,
-      children: routesList.map((d) {
+      children: routesList.asMap().entries.map((entry) {
+        var index = entry.key;
+        var d = entry.value;
         var id = d['id']! as String;
         var title = d['title']! as String;
         var icon = d['icon']! as Icon;
@@ -149,11 +127,14 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               width: 10,
             ),
-            icon,
+            Icon(icon.icon,
+                color: currentIndex == index ? Colors.redAccent : null),
             const SizedBox(
               width: 10,
             ),
-            Text(title, style: Theme.of(context).textTheme.titleLarge)
+            Text(title,
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: currentIndex == index ? Colors.redAccent : null)),
           ]),
           ...children.map((e) => ListTile(
                 title: Text(e.id.toString(),
