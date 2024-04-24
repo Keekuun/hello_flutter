@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/routes.dart';
 import 'package:scrollview_observer/scrollview_observer.dart';
@@ -18,10 +20,10 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    _observerController = ListObserverController(controller: _scrollController)
-      ..initialIndexModel = ObserverIndexPositionModel(
-        index: routesList.length - 1, // 默认定位到最后一个
-      );
+    _observerController = ListObserverController(controller: _scrollController);
+    // ..initialIndexModel = ObserverIndexPositionModel(
+    //   index: routesList.length - 1, // 默认定位到最后一个
+    // );
   }
 
   @override
@@ -53,7 +55,13 @@ class _HomePageState extends State<HomePage> {
         triggerOnObserveType: ObserverTriggerOnObserveType.directly,
         controller: _observerController,
         onObserve: (resultModel) {
-          // log(resultModel.displayingChildIndexList.toString());
+          log(resultModel.displayingChildIndexList.toString());
+          // Future.delayed(const Duration(milliseconds: 500), () {
+          //   setState(() {
+          //     currentIndex = resultModel.displayingChildIndexList.last;
+          //   });
+          // });
+
           setState(() {
             currentIndex = resultModel.displayingChildIndexList.last;
           });
@@ -65,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: null,
         child: PopupMenuButton(
             tooltip: '菜单',
-            color: Colors.black54,
+            color: Colors.redAccent,
             icon: const Icon(Icons.menu),
             shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -93,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                       });
                     },
                     child: Row(children: [
-                      Icon(icon.icon, color: Colors.redAccent),
+                      Icon(icon.icon, color: Colors.white54),
                       const SizedBox(
                         width: 10,
                       ),
@@ -101,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                           style: Theme.of(context)
                               .textTheme
                               .titleMedium
-                              ?.copyWith(color: Colors.redAccent)),
+                              ?.copyWith(color: Colors.white)),
                     ]));
               }).toList();
             }),
