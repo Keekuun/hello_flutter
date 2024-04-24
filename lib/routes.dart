@@ -17,6 +17,7 @@ import 'layouts/container.dart';
 import 'layouts/row.dart';
 import 'layouts/wrap.dart';
 import 'lists/grid.dart';
+import 'lists/list1.dart';
 import 'others/lifecycle1.dart';
 import 'others/lifecycle2.dart';
 import 'others/lifecycle3.dart';
@@ -124,6 +125,11 @@ final List<Map<String, Object>> routesList = [
           title: 'GridList列表',
           description: 'GridList-网格列表',
           widget: const GridDemo()),
+      MyWidget(
+          id: 'ListViewDemoPage',
+          title: 'ListViewDemoPage',
+          description: 'ListViewDemoPage-网格列表',
+          widget: const ListViewDemoPage()),
     ],
   },
   {

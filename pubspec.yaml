@@ -57,6 +57,7 @@ dependencies:
   freezed_annotation: ^2.4.1
 
   english_words: ^4.0.0
+  scrollview_observer: ^1.19.1
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
