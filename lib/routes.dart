@@ -25,11 +25,11 @@ import 'states/blocs/bloc_counter/counter_page.dart';
 import 'states/blocs/cubit_counter/counter_page.dart';
 import 'wrap_page.dart';
 
-final List<Map<String, Object>> routesList = [
+final List<Map<String, dynamic>> routesList = [
   {
     'id': 'Contents',
     'title': '内容组件',
-    'icon': const Icon(Icons.widgets_rounded),
+    'icon': Icons.widgets_rounded,
     'children': [
       MyWidget(
           id: 'Text',
@@ -76,7 +76,7 @@ final List<Map<String, Object>> routesList = [
   {
     'id': 'Layouts',
     'title': '布局组件',
-    'icon': const Icon(Icons.layers_rounded),
+    'icon': Icons.layers_rounded,
     'children': [
       MyWidget(
           id: 'Wrap',
@@ -113,7 +113,7 @@ final List<Map<String, Object>> routesList = [
   {
     'id': 'Lists',
     'title': '列表组件',
-    'icon': const Icon(Icons.list_alt_rounded),
+    'icon': Icons.list_alt_rounded,
     'children': [
       MyWidget(
           id: 'ListView',
@@ -130,7 +130,7 @@ final List<Map<String, Object>> routesList = [
   {
     'id': 'States',
     'title': '状态管理',
-    'icon': const Icon(Icons.recycling_rounded),
+    'icon': Icons.recycling_rounded,
     'children': [
       MyWidget(
           id: 'Bloc-Cubit',
@@ -147,7 +147,7 @@ final List<Map<String, Object>> routesList = [
   {
     'id': 'Others',
     'title': '其他组件',
-    'icon': const Icon(Icons.more_horiz_rounded),
+    'icon': Icons.more_horiz_rounded,
     'children': [
       MyWidget(
           id: 'Lifecycle1',
@@ -169,7 +169,7 @@ final List<Map<String, Object>> routesList = [
   {
     'id': 'Demo',
     'title': '练习案例',
-    'icon': const Icon(Icons.assessment_rounded),
+    'icon': Icons.assessment_rounded,
     'children': [
       MyWidget(
         id: 'todo_list',
@@ -215,7 +215,38 @@ Map<String, WidgetBuilder> _getRoutes() {
   return routes;
 }
 
+final List<Map<String, dynamic>> homeTabsData = [
+  {
+    'id': 'home',
+    'title': '首页',
+    'icon': Icons.home,
+    'route': '/',
+  },
+  {
+    'id': 'demo',
+    'title': '案例',
+    'icon': Icons.assessment_rounded,
+    'route': '/demo',
+  },
+  {
+    'id': 'setting',
+    'title': '设置',
+    'icon': Icons.settings,
+    'route': '/setting',
+  },
+  {
+    'id': 'about',
+    'title': '关于',
+    'icon': Icons.info,
+    'route': '/about',
+  }
+];
+
+final baseRoutes = _getRoutes();
 final Map<String, WidgetBuilder> routes = {
   '/': (BuildContext context) => const HomePage(),
-  ..._getRoutes(),
+  '/demo': (BuildContext context) => baseRoutes['/Contents/Form']!(context),
+  '/setting': (BuildContext context) => baseRoutes['/Lists/GridList']!(context),
+  '/about': (BuildContext context) => baseRoutes['/Lists/GridList']!(context),
+  ...baseRoutes,
 };
