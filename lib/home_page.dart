@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: null,
           child: PopupMenuButton(
               tooltip: '菜单',
-              color: Colors.redAccent,
+              color: const Color.fromRGBO(0, 0, 0, 0.5),
               icon: const Icon(Icons.menu),
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
               }),
         ),
         bottomNavigationBar: ConvexAppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
+          // backgroundColor: Theme.of(context).colorScheme.primary,
           style: TabStyle.react,
           activeColor: Colors.white,
           color: Colors.white54,

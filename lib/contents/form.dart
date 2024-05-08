@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../utils/formt.dart';
+import '../utils/format.dart';
 
 class FormDemo extends HookWidget {
   const FormDemo({super.key});
@@ -38,7 +36,8 @@ class FormDemo extends HookWidget {
         TextEditingValue(text: myForm.value['phone'].toString());
     emailController.value = TextEditingValue(text: myForm.value['email']);
     passwordController.value = TextEditingValue(text: myForm.value['password']);
-    descriptionController.value = TextEditingValue(text: myForm.value['description']);
+    descriptionController.value =
+        TextEditingValue(text: myForm.value['description']);
 
     return Form(
         key: formKey,
@@ -118,44 +117,42 @@ class FormDemo extends HookWidget {
               }),
           const SizedBox(height: 20),
           TextFormField(
-            keyboardType: TextInputType.phone,
-            maxLength: 11,
-            controller: phoneController,
-            onChanged: (value) => myForm.value['phone'] = int.parse(value),
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.phone, color: Colors.black38, size: 24),
-              border: OutlineInputBorder(),
-              labelText: '手机号',
-              hintText: '数字输入框',
-            ),
-            // 自定义校验器
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '手机号不能为空';
-              }
-              return null;
-            }
-          ),
+              keyboardType: TextInputType.phone,
+              maxLength: 11,
+              controller: phoneController,
+              onChanged: (value) => myForm.value['phone'] = int.parse(value),
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.phone, color: Colors.black38, size: 24),
+                border: OutlineInputBorder(),
+                labelText: '手机号',
+                hintText: '数字输入框',
+              ),
+              // 自定义校验器
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return '手机号不能为空';
+                }
+                return null;
+              }),
           const SizedBox(height: 20),
           TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            controller: emailController,
-            onChanged: (value) => myForm.value['email'] = value,
-            decoration: const InputDecoration(
-              prefixIcon:
-              Icon(Icons.email_rounded, color: Colors.black38, size: 24),
-              border: OutlineInputBorder(),
-              labelText: '邮箱',
-              hintText: '邮箱输入框',
-            ),
-            // 自定义校验器
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return '邮箱不能为空';
-              }
-              return null;
-            }
-          ),
+              keyboardType: TextInputType.emailAddress,
+              controller: emailController,
+              onChanged: (value) => myForm.value['email'] = value,
+              decoration: const InputDecoration(
+                prefixIcon:
+                    Icon(Icons.email_rounded, color: Colors.black38, size: 24),
+                border: OutlineInputBorder(),
+                labelText: '邮箱',
+                hintText: '邮箱输入框',
+              ),
+              // 自定义校验器
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return '邮箱不能为空';
+                }
+                return null;
+              }),
           const SizedBox(height: 20),
           TextFormField(
             keyboardType: TextInputType.text,
@@ -171,7 +168,8 @@ class FormDemo extends HookWidget {
                     onPressed: () {
                       descriptionController.clear();
                     },
-                    icon: const Icon(Icons.clear, color: Colors.blue, size: 24))),
+                    icon:
+                        const Icon(Icons.clear, color: Colors.blue, size: 24))),
           ),
           const SizedBox(height: 20),
           Row(children: [

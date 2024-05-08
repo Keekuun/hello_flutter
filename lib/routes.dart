@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/navigator/pageview.dart';
+import 'package:hello_flutter/network/http.dart';
 
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -125,6 +127,30 @@ final List<Map<String, dynamic>> routesList = [
           title: 'GridList列表',
           description: 'GridList-网格列表',
           widget: const GridDemo()),
+    ],
+  },
+  {
+    'id': 'Navigator',
+    'title': '路由导航',
+    'icon': Icons.route_rounded,
+    'children': [
+      MyWidget(
+          id: 'PageView',
+          title: 'PageView组件',
+          description: 'PageView组件-页面滑动切换',
+          widget: PageViewDemo()),
+    ],
+  },
+  {
+    'id': 'Network',
+    'title': '网络请求',
+    'icon': Icons.network_check_rounded,
+    'children': [
+      MyWidget(
+          id: 'Http',
+          title: 'Http请求数据',
+          description: 'Http请求数据',
+          widget: const HttpDemo()),
     ],
   },
   {

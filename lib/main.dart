@@ -26,11 +26,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         splashColor: Colors.transparent,
         colorScheme: ColorScheme.light(
-            surface: Colors.grey.shade200,
-            onSurface: Colors.black,
-            primary: Colors.redAccent,
-            secondary: Colors.green,
-            onPrimary: Colors.white,
+          surface: Colors.grey.shade200,
+          onSurface: Colors.black,
+          primary: Colors.redAccent,
+          secondary: Colors.green,
+          onPrimary: Colors.white,
         ),
         useMaterial3: true,
       ),
@@ -38,4 +38,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

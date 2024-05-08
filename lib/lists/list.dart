@@ -21,7 +21,7 @@ class _ListViewDemoState extends State<ListViewDemo> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      physics: const NeverScrollableScrollPhysics(),
+      // physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: _words.length,
       itemBuilder: (context, index) {

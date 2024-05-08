@@ -64,6 +64,7 @@ dependencies:
   uuid: ^4.4.0
   flutter_screenutil: ^5.9.0
   convex_bottom_bar: ^3.2.0
+  http: ^1.2.1
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:

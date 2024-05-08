@@ -36,7 +36,7 @@ class GridDemo extends StatelessWidget {
     ];
     return GridView.count(
       // SingleChildScrollView 嵌套 GridView 需要禁用滚动
-      physics: const NeverScrollableScrollPhysics(),
+      // physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       primary: true,
       padding: const EdgeInsets.all(0),
