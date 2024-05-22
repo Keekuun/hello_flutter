@@ -20,6 +20,7 @@ import 'layouts/stack.dart';
 import 'layouts/wrap.dart';
 import 'lists/grid.dart';
 import 'lists/list.dart';
+import 'network/dio.dart';
 import 'others/lifecycle1.dart';
 import 'others/lifecycle2.dart';
 import 'others/lifecycle3.dart';
@@ -151,6 +152,11 @@ final List<Map<String, dynamic>> routesList = [
           title: 'Http请求数据',
           description: 'Http请求数据',
           widget: const HttpDemo()),
+      MyWidget(
+          id: 'Dio',
+          title: 'Dio请求数据',
+          description: 'Dio请求数据',
+          widget: const DioDemo()),
     ],
   },
   {
