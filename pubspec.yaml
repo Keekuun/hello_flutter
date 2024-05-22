@@ -65,6 +65,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   convex_bottom_bar: ^3.2.0
   http: ^1.2.1
+  shelf_proxy: ^1.0.4
+  shelf: ^1.4.1
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:

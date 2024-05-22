@@ -38,7 +38,8 @@ class Post {
 // 将HTTP响应转换为 Post 类实例
 Future<Post> fetchPost([int id = 1]) async {
   final response = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
+      // .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
+      .get(Uri.parse('http://localhost:5200/posts/$id'));
 
   if (response.statusCode == 200) {
     return Post.fromJson(json.decode(response.body));
