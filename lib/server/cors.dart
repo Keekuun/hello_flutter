@@ -1,6 +1,10 @@
 import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:shelf_proxy/shelf_proxy.dart';
 
+/// 解决 web 本地开发跨域问题
+/// 启动  dart ./lib/server/cors.dart
+/// 访问  http://localhost:5200/
+
 //本地域名
 const String localHost = 'localhost';
 
