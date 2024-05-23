@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,9 +38,14 @@ class Post {
 // 定义一个 fetchPost() 方法
 // 将HTTP响应转换为 Post 类实例
 Future<Post> fetchPost([int id = 1]) async {
+  const bool inProduction = bool.fromEnvironment("dart.vm.product");
+  var url = kIsWeb == true || !inProduction
+      ? 'http://localhost:5200/posts/$id'
+      : 'https://jsonplaceholder.typicode.com/posts/$id';
+
   final response = await http
       // .get(Uri.parse('https://jsonplaceholder.typicode.com/posts/$id'));
-      .get(Uri.parse('http://localhost:5200/posts/$id'));
+      .get(Uri.parse(url));
 
   if (response.statusCode == 200) {
     return Post.fromJson(json.decode(response.body));

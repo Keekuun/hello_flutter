@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import './http.dart';
@@ -135,7 +136,12 @@ handleErrorDemo() async {
 // 定义一个 fetchPost() 方法
 // 将HTTP响应转换为 Post 类实例
 Future<Post> fetchPost([int id = 1]) async {
-  final response = await dio.get('http://localhost:5200/posts/$id');
+  const bool inProduction = bool.fromEnvironment("dart.vm.product");
+  var url = kIsWeb == true || !inProduction
+      ? 'http://localhost:5200/posts/$id'
+      : 'https://jsonplaceholder.typicode.com/posts/$id';
+
+  final response = await dio.get(url);
 
   if (response.statusCode == 200) {
     return Post.fromJson(response.data);

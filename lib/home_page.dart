@@ -120,7 +120,7 @@ class _HomePageState extends State<HomePage> {
               }),
         ),
         bottomNavigationBar: ConvexAppBar(
-          // backgroundColor: Theme.of(context).colorScheme.primary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           style: TabStyle.react,
           activeColor: Colors.white,
           color: Colors.white54,

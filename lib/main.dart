@@ -17,7 +17,8 @@ import 'routes.dart';
 // }
 
 void main() {
-  runAppWithFConsole(const MyApp(), delegate: MyCardDelegate(),
+  runAppWithFConsole(const MyApp(),
+      // delegate: MyCardDelegate(),
       beforeRun: () async {
     WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
