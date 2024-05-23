@@ -1,18 +1,41 @@
 import 'package:bloc/bloc.dart';
+import 'package:fconsole/fconsole.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:hello_flutter/my_bloc.dart';
 
+import 'my_bloc.dart';
 import 'routes.dart';
 
-void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+// void main() {
+//   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+//   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+//
+//   // whenever your initialization is completed, remove the splash screen:
+//   FlutterNativeSplash.remove();
+//   Bloc.observer = MyBlocObserver();
+//   runApp(const MyApp());
+// }
 
-  // whenever your initialization is completed, remove the splash screen:
-  FlutterNativeSplash.remove();
-  Bloc.observer = MyBlocObserver();
-  runApp(const MyApp());
+void main() {
+  runAppWithFConsole(const MyApp(), delegate: MyCardDelegate(),
+      beforeRun: () async {
+    WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+    // whenever your initialization is completed, remove the splash screen:
+    FlutterNativeSplash.remove();
+    Bloc.observer = MyBlocObserver();
+  });
+}
+
+class MyCardDelegate extends FConsoleCardDelegate {
+  @override
+  List<FConsoleCard> cardsBuilder(DefaultCards defaultCards) {
+    return [
+      defaultCards.logCard,
+      defaultCards.flowCard,
+      defaultCards.sysInfoCard,
+    ];
+  }
 }
 
 class MyApp extends StatelessWidget {
