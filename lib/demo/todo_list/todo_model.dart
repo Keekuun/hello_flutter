@@ -100,3 +100,12 @@ class TodoModel {
     };
   }
 }
+
+TodoModel createATodo() {
+  var uuid = const Uuid().v4().toString();
+  return TodoModel(
+      title: '标题${uuid.substring(0, 3)}',
+      content: '内容${uuid * 4}',
+      remark: '备注${uuid.substring(0, 6)}',
+      operator: 'zkk$uuid');
+}
