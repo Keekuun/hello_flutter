@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/navigator/pageview.dart';
 import 'package:hello_flutter/network/http.dart';
+import 'package:hello_flutter/web/webview.dart';
 
 import 'contents/button.dart';
 import 'contents/form.dart';
@@ -174,6 +175,18 @@ final List<Map<String, dynamic>> routesList = [
           title: 'Bloc状态管理',
           description: 'Bloc状态管理',
           widget: const CounterBlocPage()),
+    ],
+  },
+  {
+    'id': 'WebView',
+    'title': 'WebView',
+    'icon': Icons.html_rounded,
+    'children': [
+      MyWidget(
+          id: 'WebView',
+          title: 'WebView',
+          description: 'WebView',
+          widget: const WebViewDemo()),
     ],
   },
   {
