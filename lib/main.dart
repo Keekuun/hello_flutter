@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:fconsole/fconsole.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'my_bloc.dart';
@@ -44,21 +45,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'hello flutter',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        splashColor: Colors.transparent,
-        colorScheme: ColorScheme.light(
-          surface: Colors.grey.shade200,
-          onSurface: Colors.black,
-          primary: Colors.redAccent,
-          secondary: Colors.green,
-          onPrimary: Colors.white,
+    return FlutterEasyLoading(
+      child: MaterialApp(
+        title: 'hello flutter',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          splashColor: Colors.transparent,
+          colorScheme: ColorScheme.light(
+            surface: Colors.grey.shade200,
+            onSurface: Colors.black,
+            primary: Colors.redAccent,
+            secondary: Colors.green,
+            onPrimary: Colors.white,
+          ),
+          useMaterial3: true,
         ),
-        useMaterial3: true,
+        routes: routes,
       ),
-      routes: routes,
     );
   }
 }

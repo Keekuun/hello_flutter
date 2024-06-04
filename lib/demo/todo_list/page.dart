@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hello_flutter/demo/todo_list/todo_bloc/todo_cubit.dart';
 import 'package:hello_flutter/demo/todo_list/todo_model.dart';
 
@@ -38,8 +38,7 @@ class TodoListWrap extends StatelessWidget {
         backgroundColor: Colors.amber,
         elevation: 0,
         onPressed: () async {
-          // todo 显示 loading
-          // EasyLoading.show(status: 'loading...');
+          EasyLoading.show(status: 'loading...');
           await context.read<TodoCubit>().addTodo(createATodo());
           // 滚动到顶部
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -50,19 +49,16 @@ class TodoListWrap extends StatelessWidget {
               curve: Curves.linear,
             );
           });
-
-          // todo 隐藏 loading
-          // EasyLoading.dismiss();
-
-          Fluttertoast.showToast(
-            msg: '添加成功',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIosWeb: 1,
-            backgroundColor: const Color.fromRGBO(0, 0, 0, 0.5),
-            textColor: Colors.white,
-            fontSize: 16.0,
-          );
+          EasyLoading.showSuccess('添加成功');
+          // Fluttertoast.showToast(
+          //   msg: '添加成功',
+          //   toastLength: Toast.LENGTH_SHORT,
+          //   gravity: ToastGravity.CENTER,
+          //   timeInSecForIosWeb: 1,
+          //   backgroundColor: const Color.fromRGBO(0, 0, 0, 0.5),
+          //   textColor: Colors.white,
+          //   fontSize: 16.0,
+          // );
           // showBottomSheet(
           //     context: context, builder: (context) => const ToDoForm());
         },
