@@ -218,8 +218,8 @@ final List<Map<String, dynamic>> routesList = [
     'children': [
       MyWidget(
         id: 'todo_list',
-        title: 'TodoList案例',
-        description: 'TodoList案例',
+        title: 'TodoList',
+        description: 'TodoList',
         widget: const TodoListDemo(),
       )
     ]

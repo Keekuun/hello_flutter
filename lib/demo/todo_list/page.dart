@@ -40,14 +40,14 @@ class TodoListWrap extends StatelessWidget {
         onPressed: () async {
           // todo 显示 loading
           // EasyLoading.show(status: 'loading...');
-
           await context.read<TodoCubit>().addTodo(createATodo());
-          // todo fix 滚动到顶部 ?
+          // 滚动到顶部
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             listController.animateTo(
-              listController.position.maxScrollExtent,
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeOutQuart,
+              // listController.position.maxScrollExtent 滚动到底部
+              0,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.linear,
             );
           });
 
@@ -59,7 +59,7 @@ class TodoListWrap extends StatelessWidget {
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 1,
-            backgroundColor: Colors.green,
+            backgroundColor: const Color.fromRGBO(0, 0, 0, 0.5),
             textColor: Colors.white,
             fontSize: 16.0,
           );

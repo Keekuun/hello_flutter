@@ -6,8 +6,6 @@ sealed class TodoState extends Equatable {
   // 默认添加一个空的todo
   const TodoState.empty() : todos = const <TodoModel>[];
 
-  TodoState.demo() : todos = getDemoTodoList();
-
   const TodoState(this.todos);
 }
 
@@ -18,10 +16,11 @@ final class TodoInitial extends TodoState {
   List<Object> get props => [todos];
 }
 
-List<TodoModel> getDemoTodoList() {
+Future<List<TodoModel>> getDemoTodoList() async {
   var todoListData = <TodoModel>[];
   for (var i = 0; i < 10; i++) {
-    todoListData.add(createATodo());
+    var todo = await createATodoWithImage();
+    todoListData.add(todo);
   }
   return todoListData;
 }

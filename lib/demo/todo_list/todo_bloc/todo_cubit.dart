@@ -9,8 +9,8 @@ class TodoCubit extends Cubit<TodoState> {
   TodoCubit() : super(const TodoInitial([]));
 
   Future<void> addTodo(TodoModel todo) async {
+    todo.imageUrl = await getRandomImageUrl();
     emit(TodoInitial([todo, ...state.todos]));
-    await Future.delayed(const Duration(seconds: 5));
   }
 
   void removeTodo(TodoModel todo) {

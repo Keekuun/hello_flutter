@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
 
 class TodoModel {
@@ -55,6 +58,9 @@ class TodoModel {
   // 任务操作人
   String operator = '';
 
+  // 背景图片
+  String imageUrl = '';
+
   TodoModel({
     required this.title,
     this.content = '',
@@ -97,15 +103,43 @@ class TodoModel {
       'priority': priority,
       'doneProgress': doneProgress,
       'operator': operator,
+      'imageUrl': imageUrl,
     };
   }
 }
 
 TodoModel createATodo() {
   var uuid = const Uuid().v4().toString();
-  return TodoModel(
-      title: '标题${uuid.substring(0, 3)}',
-      content: '内容${uuid * 4}',
-      remark: '备注${uuid.substring(0, 6)}',
-      operator: 'zkk$uuid');
+  var todo = TodoModel(
+    title: '标题${uuid.substring(0, 3)}',
+    content: '内容${uuid * 4}',
+    remark: '备注${uuid.substring(0, 6)}',
+    operator: 'zkk$uuid',
+  );
+  return todo;
+}
+
+Future<TodoModel> createATodoWithImage() async {
+  var uuid = const Uuid().v4().toString();
+  var todo = TodoModel(
+    title: '标题${uuid.substring(0, 3)}',
+    content: '内容${uuid * 4}',
+    remark: '备注${uuid.substring(0, 6)}',
+    operator: 'zkk$uuid',
+  );
+  todo.imageUrl = await getRandomImageUrl();
+  return todo;
+}
+
+Future<String> getRandomImageUrl() async {
+  final response = await http
+      .get(Uri.parse('https://tuapi.eees.cc/api.php?category=meinv&type=url'));
+
+  if (response.statusCode == 200) {
+    return response.body;
+  }
+
+  log('resp: $response');
+
+  return '';
 }
