@@ -40,6 +40,7 @@ class TodoListWrap extends StatelessWidget {
         onPressed: () async {
           EasyLoading.show(status: 'loading...');
           await context.read<TodoCubit>().addTodo(createATodo());
+          EasyLoading.dismiss();
           // 滚动到顶部
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
             listController.animateTo(

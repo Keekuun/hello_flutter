@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'todo_model.dart';
@@ -75,47 +77,77 @@ class _ToDoListState extends State<ToDoList>
                           Colors.black, BlendMode.lighten),
                       opacity: 0.66,
                     )),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                      title: Text(todo.title,
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.white)),
-                      subtitle: Text(todo.remark,
-                          style: const TextStyle(color: Colors.white)),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            // 使用富文本实现 TextIndent
-                            child: Text.rich(TextSpan(children: [
-                              const WidgetSpan(
-                                child: SizedBox(
-                                  width: 20,
-                                  child: VerticalDivider(),
-                                ),
-                              ),
-                              TextSpan(
-                                text: todo.content,
-                                style: const TextStyle(
-                                    fontSize: 18, color: Colors.greenAccent),
-                              ),
-                            ])),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                child: ToDoContent(todo),
               ),
             );
           }),
+    );
+  }
+}
+
+class ToDoContent extends StatelessWidget {
+  final TodoModel todo;
+
+  const ToDoContent(this.todo, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.black.withOpacity(0.3),
+      child: Stack(
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                title: Text(todo.title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white)),
+                subtitle: Text(todo.remark,
+                    style: const TextStyle(color: Colors.white)),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
+                child: Expanded(
+                  // 使用富文本实现 TextIndent
+                  child: Text.rich(TextSpan(children: [
+                    const WidgetSpan(
+                      child: SizedBox(
+                        width: 20,
+                        child: VerticalDivider(),
+                      ),
+                    ),
+                    TextSpan(
+                      text: todo.content,
+                      style:
+                          const TextStyle(fontSize: 18, color: Colors.white70),
+                    ),
+                  ])),
+                ),
+              )
+            ],
+          ),
+          Positioned.fill(
+            top: 0,
+            right: 0,
+            child: Container(
+              color: Colors.black.withOpacity(0.3),
+              child: IconButton(
+                icon: const Icon(Icons.remove_red_eye_outlined,
+                    size: 32, color: Colors.white),
+                onPressed: () {
+                  // todo 查看详情
+                  log('查看详情');
+                },
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
