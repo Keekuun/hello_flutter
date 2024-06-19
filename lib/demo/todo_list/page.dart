@@ -35,6 +35,7 @@ class TodoListWrap extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        heroTag: 'newTodo',
         backgroundColor: Colors.amber,
         elevation: 0,
         onPressed: () async {
