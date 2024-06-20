@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routes: routes,
+        builder: EasyLoading.init(),
       ),
     );
   }
