@@ -12,9 +12,9 @@ class CounterCubitPage extends StatelessWidget {
       create: (_) => CounterCubit(),
       child: const Column(
           children: [
-            CounterView(),
+            CounterView(1),
             Divider(),
-            CounterView(),
+            CounterView(2),
           ],
       ),
     );
@@ -22,17 +22,23 @@ class CounterCubitPage extends StatelessWidget {
 }
 
 class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+  final int index;
+  const CounterView(this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          const Text('You have pushed the button this many times:'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text('CounterView组件$index:', style: const TextStyle(fontSize: 18),),
+            ],
+          ),
           BlocBuilder<CounterCubit, CounterState>(
             builder: (context, state) {
               // 使用圆形包裹
