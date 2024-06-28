@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class WrapDemo extends StatelessWidget {
   const WrapDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     const localeImg = 'assets/images/logo.jpg';
@@ -21,7 +22,7 @@ class WrapDemo extends StatelessWidget {
           log('deleted');
         },
         deleteButtonTooltipMessage: 'Delete',
-        // color: WidgetStateProperty.all(Colors.blue),
+        color: MaterialStateProperty.all(Colors.blue),
         backgroundColor: Colors.white,
         deleteIconColor: Colors.redAccent,
         elevation: 10,

@@ -53,3 +53,6 @@ samples, guidance on mobile development, and a full API reference.
 ## learning
 
 + https://www.fullstackaction.com/pages/61cc74/
++ https://flutter.dev/learn
++ https://flutter.github.io/samples/web/animations/
++ https://github.com/flutter/codelabs
