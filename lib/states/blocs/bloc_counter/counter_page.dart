@@ -11,9 +11,9 @@ class CounterBlocPage extends StatelessWidget {
       create: (_) => CounterBloc(),
       child: const Column(
         children: [
-          CounterView(),
+          CounterView(1),
           Divider(),
-          CounterView(),
+          CounterView(2),
         ],
       ),
     );
@@ -21,7 +21,8 @@ class CounterBlocPage extends StatelessWidget {
 }
 
 class CounterView extends StatelessWidget {
-  const CounterView({super.key});
+  final int index;
+  const CounterView(this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,12 @@ class CounterView extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-          const Text('You have pushed the button this many times:'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('CounterView组件$index:', style: const TextStyle(fontSize: 18),),
+                ],
+              ),
           BlocBuilder<CounterBloc, CounterState>(builder: (context, state) {
             return Chip(
                 label: Text('${state.msg}: ${state.count}'),

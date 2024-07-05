@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class LifecycleDemo3 extends StatefulWidget {
+class LifecycleDemo3 extends StatefulHookWidget {
   const LifecycleDemo3({super.key});
 
   @override
@@ -20,6 +21,7 @@ class _ExampleState extends State<LifecycleDemo3> {
     log('constructor, mounted: $mounted');
   }
 
+  
   @override
   void initState() {
     super.initState();
@@ -50,6 +52,8 @@ class _ExampleState extends State<LifecycleDemo3> {
   Widget build(BuildContext context) {
     log('build method');
 
+    final msg = useState('Hello StatefulHookWidget');
+
     return Column(
       children: [
         Center(
@@ -70,9 +74,9 @@ class _ExampleState extends State<LifecycleDemo3> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(
-                        context, '/Others/Lifecycle_hook');
+                        context, '/Others/Lifecycle1');
                   },
-                  child: const Text('去lifecycle_hook页面'),
+                  child: const Text('去lifecycle1页面'),
                 ),
               ),
             ],

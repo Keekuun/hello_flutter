@@ -196,18 +196,23 @@ final List<Map<String, dynamic>> routesList = [
     'children': [
       MyWidget(
           id: 'Lifecycle1',
-          title: '生命周期测试1',
-          description: '生命周期测试1',
+          title: 'StatefulWidget组件',
+          description: 'StatefulWidget生命周期测试-无子组件',
           widget: const LifecycleDemo1()),
       MyWidget(
           id: 'Lifecycle2',
-          title: '生命周期测试2',
-          description: '生命周期测试2',
+          title: 'StatefulWidget组件',
+          description: 'StatefulWidget生命周期测试-包含子组件',
           widget: const LifecycleDemo2()),
       MyWidget(
           id: 'Lifecycle3',
-          title: '生命周期测试3',
-          description: '生命周期测试3',
+          title: 'InheritedWidget组件',
+          description: 'InheritedWidget生命周期测试',
+          widget: const LifecycleDemo3()),
+      MyWidget(
+          id: 'Lifecycle_hook',
+          title: 'StatefulHookWidget组件',
+          description: 'StatefulHookWidget生命周期测试',
           widget: const LifecycleDemo3()),
     ],
   },
