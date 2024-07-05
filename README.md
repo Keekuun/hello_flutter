@@ -46,6 +46,41 @@ samples, guidance on mobile development, and a full API reference.
 
 + equatable – a helpful package used to compare Dart objects.
 
+## build apk
+
+## build apk
+
+https://flutter-ko.dev/deployment/android
+
+```
+输入密钥库口令:  hello world
+您的名字与姓氏是什么?
+  [Chou]:  Chou
+您的组织单位名称是什么?
+  [XL]:  XL
+您的组织名称是什么?
+  [XL]:  XL
+您所在的城市或区域名称是什么?
+  [SZ]:  SZ
+您所在的省/市/自治区名称是什么?
+  [SZ]:  SZ
+该单位的双字母国家/地区代码是什么?
+  [CN]:  CN
+
+```
+
+```bash
+# 生成
+keytool -genkey -v -keystore  C:\flutter\sign\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+# 迁移
+keytool -importkeystore -srckeystore C:\flutter\sign\upload-keystore.jks -destkeystore C:\flutter\sign\upload-keystore.jks -deststoretype pkcs12
+```
+
+```bash
+flutter build apk
+```
+
 ## Flutter tools
 
 + https://dartj.web.app/
