@@ -65,8 +65,17 @@ https://flutter-ko.dev/deployment/android
 您所在的省/市/自治区名称是什么?
   [SZ]:  SZ
 该单位的双字母国家/地区代码是什么?
-  [CN]:  CN
+  [HK]:  HK
 
+```
+
+`key.properties`
+
+```
+storePassword=hello world
+keyPassword=hello world
+keyAlias=upload
+storeFile=C:\\flutter\\sign\\upload-keystore.jks
 ```
 
 ```bash
