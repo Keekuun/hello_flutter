@@ -88,6 +88,8 @@ keytool -importkeystore -srckeystore C:\flutter\sign\upload-keystore.jks -destke
 
 ```bash
 flutter build apk
+
+flutter build appbundle
 ```
 
 ## Flutter tools
@@ -100,3 +102,10 @@ flutter build apk
 + https://flutter.dev/learn
 + https://flutter.github.io/samples/web/animations/
 + https://github.com/flutter/codelabs
+
+## favorites
+
++ https://fluttergems.dev/
++ https://pub.dev/packages
++ https://github.com/flutter/packages
++ https://github.com/flutter/flutter
