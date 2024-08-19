@@ -48,8 +48,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## build apk
 
-## build apk
-
 https://flutter-ko.dev/deployment/android
 
 ```
