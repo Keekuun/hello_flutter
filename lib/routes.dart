@@ -11,6 +11,7 @@ import 'contents/rich_text.dart';
 import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
+import 'custom/AutoHeightPageViewPage.dart';
 import 'demo/todo_list/page.dart';
 import 'home_page.dart';
 import 'layouts/column.dart';
@@ -215,6 +216,19 @@ final List<Map<String, dynamic>> routesList = [
           description: 'StatefulHookWidget生命周期测试',
           widget: const LifecycleDemo3()),
     ],
+  },
+  {
+    'id': 'Custom',
+    'title': '自定义组件',
+    'icon': Icons.dashboard_customize_rounded,
+    'children': [
+      MyWidget(
+        id: 'AutoHeightPageViewPage',
+        title: 'AutoHeightPageView',
+        description: 'AutoHeightPageView自动计算组件高度',
+        widget: const AutoHeightPageViewPage(),
+      )
+    ]
   },
   {
     'id': 'Demo',
