@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'todo_model.dart';
 
@@ -115,7 +114,6 @@ class ToDoContent extends StatelessWidget {
                 child: RichText(
                   maxLines: 3,
                   textAlign: TextAlign.start,
-                  textDirection: TextDirection.ltr,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   text: TextSpan(children: [
@@ -144,8 +142,93 @@ class ToDoContent extends StatelessWidget {
                 icon: const Icon(Icons.remove_red_eye_outlined,
                     size: 32, color: Colors.white),
                 onPressed: () {
-                  // todo 查看详情
-                  log('查看详情');
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          content: Container(
+                            clipBehavior: Clip.antiAlias,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.8),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.white12,
+                                    offset: Offset(0, 5),
+                                    blurRadius: 10),
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    offset: Offset(0, -5),
+                                    blurRadius: 10),
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    offset: Offset(5, 0),
+                                    blurRadius: 10),
+                              ],
+                              borderRadius: BorderRadius.circular(16),
+                              image: DecorationImage(
+                                image: NetworkImage(todo.imageUrl),
+                                fit: BoxFit.cover,
+                                filterQuality: FilterQuality.high,
+                                colorFilter: const ColorFilter.mode(
+                                    Colors.black, BlendMode.lighten),
+                                opacity: 0.66,
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  title: Text(todo.title,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.white)),
+                                  subtitle: Text(todo.remark,
+                                      style:
+                                          const TextStyle(color: Colors.white)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12.0, vertical: 6),
+                                  child: RichText(
+                                    maxLines: 3,
+                                    textAlign: TextAlign.start,
+                                    softWrap: true,
+                                    overflow: TextOverflow.ellipsis,
+                                    text: TextSpan(children: [
+                                      const WidgetSpan(
+                                        child: SizedBox(
+                                          width: 20,
+                                          child: VerticalDivider(),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: todo.content,
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white70),
+                                      ),
+                                    ]),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Text(
+                                      textAlign: TextAlign.right,
+                                      DateFormat('yyyy-MM-dd HH:mm:ss')
+                                          .format(todo.createTime),
+                                      style: const TextStyle(
+                                        color: Colors.white54,
+                                      )),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      });
                 },
               ),
             ),
