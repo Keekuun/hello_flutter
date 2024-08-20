@@ -149,7 +149,8 @@ class ToDoContent extends StatelessWidget {
                           contentPadding: EdgeInsets.zero,
                           content: Container(
                             clipBehavior: Clip.antiAlias,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 16, horizontal: 10),
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.8),
                               boxShadow: const [
