@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:http/http.dart' as http;
 import 'package:uuid/uuid.dart';
@@ -112,7 +114,7 @@ TodoModel createATodo() {
   var uuid = const Uuid().v4().toString();
   var todo = TodoModel(
     title: '标题${uuid.substring(0, 3)}',
-    content: '内容${uuid * 4}',
+    content: '内容${generateRandomChineseText(100)}',
     remark: '备注${uuid.substring(0, 6)}',
     operator: 'zkk$uuid',
   );
@@ -123,9 +125,21 @@ Future<TodoModel> createATodoWithImage() async {
   var uuid = const Uuid().v4().toString();
   var todo = TodoModel(
     title: '标题${uuid.substring(0, 3)}',
-    content: '内容${uuid * 4}',
+    content: '内容${generateRandomChineseText(100)}',
     remark: '备注${uuid.substring(0, 6)}',
     operator: 'zkk$uuid',
+  );
+  todo.imageUrl = await getRandomImageUrl();
+  return todo;
+}
+
+Future<TodoModel> createATodoWithSici() async {
+  var data = await getRandomSici();
+  var todo = TodoModel(
+    title: data['origin'],
+    remark: data['author'],
+    content: data['content'],
+    operator: data['author'],
   );
   todo.imageUrl = await getRandomImageUrl();
   return todo;
@@ -142,4 +156,22 @@ Future<String> getRandomImageUrl() async {
   log('resp: $response');
 
   return '';
+}
+
+String generateRandomChineseText(int length) {
+  math.Random random = math.Random();
+  String result = '';
+  for (int i = 0; i < length; i++) {
+    int codePoint = 19968 + random.nextInt(20902 - 19968);
+    result += String.fromCharCode(codePoint);
+  }
+  return result;
+}
+
+Future<Map<String, dynamic>> getRandomSici() async {
+  final response = await http.get(
+    Uri.parse('https://v1.jinrishici.com/all.json'),
+  );
+  var json = response.body;
+  return jsonDecode(json);
 }

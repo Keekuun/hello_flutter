@@ -112,9 +112,13 @@ class ToDoContent extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10),
-                child: Expanded(
-                  // 使用富文本实现 TextIndent
-                  child: Text.rich(TextSpan(children: [
+                child: RichText(
+                  maxLines: 3,
+                  textAlign: TextAlign.start,
+                  textDirection: TextDirection.ltr,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  text: TextSpan(children: [
                     const WidgetSpan(
                       child: SizedBox(
                         width: 20,
@@ -126,7 +130,7 @@ class ToDoContent extends StatelessWidget {
                       style:
                           const TextStyle(fontSize: 18, color: Colors.white70),
                     ),
-                  ])),
+                  ]),
                 ),
               )
             ],

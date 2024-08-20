@@ -30,17 +30,25 @@ class TodoListWrap extends StatelessWidget {
     return Scaffold(
       body: BlocBuilder<TodoCubit, TodoState>(
         builder: (context, state) {
-          return ToDoList(state.todos, listController);
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ToDoList(state.todos, listController),
+          );
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         heroTag: 'newTodo',
         backgroundColor: Colors.amber,
         elevation: 0,
         onPressed: () async {
           EasyLoading.show(status: 'loading...');
-          await context.read<TodoCubit>().addTodo(createATodo());
+          var todo = await createATodoWithSici();
+          if (context.mounted) {
+            await context.read<TodoCubit>().addTodo(todo);
+            // await context.read<TodoCubit>().addTodo(createATodo());
+          }
           EasyLoading.dismiss();
           // 滚动到顶部
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

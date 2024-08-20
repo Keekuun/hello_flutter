@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/navigator/pageview.dart';
 import 'package:hello_flutter/network/http.dart';
+import 'package:hello_flutter/root_page.dart';
 import 'package:hello_flutter/web/webview.dart';
 
 import 'contents/button.dart';
@@ -279,6 +280,40 @@ Map<String, WidgetBuilder> _getRoutes() {
   return routes;
 }
 
+final rootTabPages = [
+  const HomePage(),
+  const TodoListDemo(),
+  const AutoHeightPageViewPage(),
+  const WebViewDemo(),
+];
+
+final List<Map<String, dynamic>> rootTabsData = [
+  {
+    'id': 'home',
+    'title': '首页',
+    'icon': Icons.home,
+    'widget': const HomePage(),
+  },
+  {
+    'id': 'demo',
+    'title': '案例',
+    'icon': Icons.assessment_rounded,
+    'widget': const TodoListDemo(),
+  },
+  {
+    'id': 'setting',
+    'title': '设置',
+    'icon': Icons.settings,
+    'widget': const AutoHeightPageViewPage(),
+  },
+  {
+    'id': 'about',
+    'title': '关于',
+    'icon': Icons.info,
+    'widget': const WebViewDemo(),
+  }
+];
+
 final List<Map<String, dynamic>> homeTabsData = [
   {
     'id': 'home',
@@ -308,7 +343,8 @@ final List<Map<String, dynamic>> homeTabsData = [
 
 final baseRoutes = _getRoutes();
 final Map<String, WidgetBuilder> routes = {
-  '/': (BuildContext context) => const HomePage(),
+  '/': (BuildContext context) => const RootPage(),
+  '/home': (BuildContext context) => const HomePage(),
   '/demo': (BuildContext context) => baseRoutes['/Contents/Form']!(context),
   '/setting': (BuildContext context) => baseRoutes['/Lists/GridList']!(context),
   '/about': (BuildContext context) => baseRoutes['/Lists/GridList']!(context),
