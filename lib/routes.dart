@@ -13,6 +13,7 @@ import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
 import 'custom/AutoHeightPageViewPage.dart';
+import 'demo/demo.dart';
 import 'demo/todo_list/page.dart';
 import 'home_page.dart';
 import 'layouts/column.dart';
@@ -282,7 +283,7 @@ Map<String, WidgetBuilder> _getRoutes() {
 
 final rootTabPages = [
   const HomePage(),
-  const TodoListDemo(),
+  const DemoPage(),
   const AutoHeightPageViewPage(),
   const WebViewDemo(),
 ];
@@ -298,7 +299,7 @@ final List<Map<String, dynamic>> rootTabsData = [
     'id': 'demo',
     'title': '案例',
     'icon': Icons.assessment_rounded,
-    'widget': const TodoListDemo(),
+    'widget': const DemoPage(),
   },
   {
     'id': 'setting',

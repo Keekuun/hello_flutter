@@ -68,7 +68,8 @@ dependencies:
   dio: ^5.4.3+1
   fconsole: ^2.6.2
   flutter_easyloading: ^3.0.5
-  intl: ^0.18.1
+  intl: ^0.19.0
+  speech_to_text: ^6.6.2
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
@@ -92,7 +93,8 @@ dev_dependencies:
   shelf_proxy: ^1.0.4
   shelf: ^1.4.1
 
-
+dependency_overrides:
+  intl: ^0.19.0
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
