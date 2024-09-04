@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/demo/todo_list/page.dart';
 import 'package:hello_flutter/demo/voice/speech_to_text.dart';
+import 'package:hello_flutter/demo/voice/text_to_speech.dart';
 
 class DemoPage extends StatelessWidget {
   const DemoPage({super.key});
@@ -18,8 +19,14 @@ class DemoPage extends StatelessWidget {
         ListItem(
           title: 'Speech to text',
           subtitle: 'Speech to text demo',
-          icon: Icons.voice_chat_rounded,
+          icon: Icons.mic_rounded,
           target: SpeechToText(),
+        ),
+        ListItem(
+          title: 'Text to speech',
+          subtitle: 'Text to speech demo',
+          icon: Icons.record_voice_over_rounded,
+          target: TextToSpeech(),
         ),
       ],
     );
