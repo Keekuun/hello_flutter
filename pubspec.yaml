@@ -70,6 +70,7 @@ dependencies:
   flutter_easyloading: ^3.0.5
   intl: ^0.19.0
   speech_to_text: ^6.6.2
+  auto_size_text: ^3.0.0
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
