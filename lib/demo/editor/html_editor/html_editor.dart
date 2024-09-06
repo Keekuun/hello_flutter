@@ -157,9 +157,9 @@ class _HtmlEditorState extends State<HtmlEditor> {
           child: Wrap(
             children: [
               textButton(
-                  text: 'Set Markdown Text',
+                  text: 'Insert Markdown Text',
                   onPressed: () {
-                    setMarkdownText('## This text is Markdown');
+                    insertMarkdownText('## This text is Markdown');
                   }),
               textButton(
                   text: 'Set Text',
@@ -277,8 +277,8 @@ class _HtmlEditorState extends State<HtmlEditor> {
     await controller.setText(text);
   }
 
-  void setMarkdownText(String text) async {
-    await controller.setText(markdown.markdownToHtml(text));
+  void insertMarkdownText(String text) async {
+    await controller.insertText(markdown.markdownToHtml(text));
   }
 
   ///[insertNetworkImage] to set the html text to editor
