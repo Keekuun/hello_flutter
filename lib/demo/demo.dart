@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/demo/editor/html_editor/html_editor.dart';
+import 'package:hello_flutter/demo/editor/quill_editor/quill_editor.dart';
 import 'package:hello_flutter/demo/todo_list/page.dart';
 import 'package:hello_flutter/demo/voice/speech_to_text.dart';
 import 'package:hello_flutter/demo/voice/text_to_speech.dart';
-
-import 'editor/editor.dart';
 
 class DemoPage extends StatelessWidget {
   const DemoPage({super.key});
@@ -38,10 +37,10 @@ class DemoPage extends StatelessWidget {
           target: HtmlEditor(),
         ),
         ListItem(
-          title: 'Markdown editor',
-          subtitle: 'Markdown editor demo',
+          title: 'Quill editor',
+          subtitle: 'Quill editor demo',
           icon: Icons.edit_note,
-          target: Editor(),
+          target: QuillEditorDemo(),
         ),
       ],
     );
