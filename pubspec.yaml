@@ -39,7 +39,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   extended_image: ^8.2.0
   url_launcher: ^6.2.5
-  fluttertoast: ^8.2.4
+  fluttertoast:
   like_button: ^2.0.5
 
   # The following adds the Cupertino Icons font to your application.
@@ -72,6 +72,8 @@ dependencies:
   speech_to_text: ^6.6.2
   auto_size_text: ^3.0.0
   flutter_tts: ^3.8.5
+  quill_html_editor: ^2.2.8
+  markdown: ^7.2.2
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:

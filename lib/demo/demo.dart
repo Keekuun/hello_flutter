@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/demo/editor/html_editor/html_editor.dart';
 import 'package:hello_flutter/demo/todo_list/page.dart';
 import 'package:hello_flutter/demo/voice/speech_to_text.dart';
 import 'package:hello_flutter/demo/voice/text_to_speech.dart';
+
+import 'editor/editor.dart';
 
 class DemoPage extends StatelessWidget {
   const DemoPage({super.key});
@@ -27,6 +30,18 @@ class DemoPage extends StatelessWidget {
           subtitle: 'Text to speech demo',
           icon: Icons.record_voice_over_rounded,
           target: TextToSpeech(),
+        ),
+        ListItem(
+          title: 'Html editor',
+          subtitle: 'Html editor demo',
+          icon: Icons.html_outlined,
+          target: HtmlEditor(),
+        ),
+        ListItem(
+          title: 'Markdown editor',
+          subtitle: 'Markdown editor demo',
+          icon: Icons.edit_note,
+          target: Editor(),
         ),
       ],
     );
