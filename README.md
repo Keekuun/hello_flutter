@@ -108,3 +108,33 @@ flutter build appbundle
 + https://pub.dev/packages
 + https://github.com/flutter/packages
 + https://github.com/flutter/flutter
+
+## error to fix
+
++ irondash_engine_context - build failed
+
+```
+\hello_flutter\build\irondash_engine_context\build\build_tool"
+Failed to decode data using encoding 'utf-8', path = '.\pubspec.yaml'
+Error: Couldn't resolve the package 'build_tool' in 'package:build_tool/build_tool.dart'.
+bin/build_tool_runner.dart:1:8: Error: Not found: 'package:build_tool/build_tool.dart'
+import 'package:build_tool/build_tool.dart' as build_tool;
+       ^
+bin/build_tool_runner.dart:3:15: Error: Method not found: 'runMain'.
+   build_tool.runMain(args);
+              ^^^^^^^
+Bad state: Generating kernel failed!
+Could not find a command named "bin\build_tool_runner.dill".
+```
+
++ shared_preferences - init error
+
+```
+SharedPreferences init error: PlatformException(channel-error, Unable to establish connection on channel: "dev.flutter.pigeon.shared_preferences_android.SharedPreferencesApi.getAll"., null, null)
+```
+
++ share_plus - error
+
+```
+[ERROR:flutter/runtime/dart_vm_initializer.cc(41)] Unhandled Exception: MissingPluginException(No implementation found for method share on channel dev.fluttercommunity.plus/share)
+```

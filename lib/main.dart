@@ -2,17 +2,20 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:hello_flutter/stores/store.dart';
 
 import 'my_bloc.dart';
 import 'routes.dart';
 
-void main() {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // whenever your initialization is completed, remove the splash screen:
   FlutterNativeSplash.remove();
   Bloc.observer = MyBlocObserver();
+
+  await Store.instance.init();
   runApp(const MyApp());
 }
 
