@@ -30,6 +30,7 @@ import 'others/lifecycle2.dart';
 import 'others/lifecycle3.dart';
 import 'states/blocs/bloc_counter/counter_page.dart';
 import 'states/blocs/cubit_counter/counter_page.dart';
+import 'states/provider/provider_demo.dart';
 import 'wrap_page.dart';
 
 final List<Map<String, dynamic>> routesList = [
@@ -178,6 +179,11 @@ final List<Map<String, dynamic>> routesList = [
           title: 'Bloc状态管理',
           description: 'Bloc状态管理',
           widget: const CounterBlocPage()),
+      MyWidget(
+          id: 'Provider',
+          title: 'Provider状态管理',
+          description: 'Provider状态管理',
+          widget: const ProviderDemo()),
     ],
   },
   {

@@ -77,6 +77,7 @@ dependencies:
   flutter_quill_extensions: ^10.5.8
   share_plus: ^10.0.2
   shared_preferences: ^2.3.2
+  provider: ^6.1.2
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
