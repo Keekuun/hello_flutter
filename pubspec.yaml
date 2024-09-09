@@ -78,6 +78,7 @@ dependencies:
   share_plus: ^10.0.2
   shared_preferences: ^2.3.2
   provider: ^6.1.2
+  animate_do: ^3.3.4
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:

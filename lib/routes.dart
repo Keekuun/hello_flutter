@@ -13,6 +13,7 @@ import 'contents/selectable_text.dart';
 import 'contents/text.dart';
 import 'contents/text_field.dart';
 import 'custom/AutoHeightPageViewPage.dart';
+import 'demo/ai_assist/ai_assist_page.dart';
 import 'demo/demo.dart';
 import 'demo/todo_list/page.dart';
 import 'home_page.dart';
@@ -287,13 +288,6 @@ Map<String, WidgetBuilder> _getRoutes() {
   return routes;
 }
 
-final rootTabPages = [
-  const HomePage(),
-  const DemoPage(),
-  const AutoHeightPageViewPage(),
-  const WebViewDemo(),
-];
-
 final List<Map<String, dynamic>> rootTabsData = [
   {
     'id': 'home',
@@ -312,6 +306,12 @@ final List<Map<String, dynamic>> rootTabsData = [
     'title': '设置',
     'icon': Icons.settings,
     'widget': const AutoHeightPageViewPage(),
+  },
+  {
+    'id': 'ai_assist',
+    'title': 'AI',
+    'icon': Icons.chat,
+    'widget': const AiAssistPage(),
   },
   {
     'id': 'about',

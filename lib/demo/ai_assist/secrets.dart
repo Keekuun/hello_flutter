@@ -1,0 +1,1 @@
+const siliconflowAPIKey = 'sk-srikmhtfmluvmutwqxnxepxsgjntfidqgqbeigvuclhfuyyg';

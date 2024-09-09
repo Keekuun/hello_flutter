@@ -50,7 +50,7 @@ class _RootPageState extends State<RootPage>
               activeTab = i;
             });
           },
-          children: rootTabPages,
+          children: rootTabsData.map((e) => e['widget'] as Widget).toList(),
         ),
         bottomNavigationBar: ConvexAppBar(
           controller: _tabController,
