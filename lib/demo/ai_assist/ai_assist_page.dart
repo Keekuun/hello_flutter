@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:hello_flutter/demo/ai_assist/siliconflow_service.dart';
 import 'package:hello_flutter/demo/ai_assist/voice_action.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 import 'message_item.dart';
 
@@ -18,13 +20,38 @@ class _AiAssistPageState extends State<AiAssistPage> {
 
   final flutterTts = FlutterTts();
 
+  final speechToText = SpeechToText();
+  String lastWords = '';
+
   Future<void> initTextToSpeech() async {
     await flutterTts.setSharedInstance(true);
-    setState(() {});
   }
 
   Future<void> systemSpeak(String content) async {
     await flutterTts.speak(content);
+  }
+
+  Future<void> initSpeechToText() async {
+    await speechToText.initialize();
+  }
+
+  Future<void> startListening() async {
+    await speechToText.listen(onResult: onSpeechResult);
+  }
+
+  Future<void> stopListening() async {
+    await speechToText.stop();
+  }
+
+  void onSpeechResult(SpeechRecognitionResult result) {
+    messages.add(MessageItem(
+      isAiMessage: false,
+      message: result.recognizedWords,
+    ));
+
+    setState(() {
+      lastWords = result.recognizedWords;
+    });
   }
 
   void _scrollToBottom() {
@@ -57,11 +84,15 @@ class _AiAssistPageState extends State<AiAssistPage> {
 
   void _handleVoiceInput(String content, int duration) async {
     print('handleVoiceInput: $content, $duration');
+    await stopListening();
   }
 
   @override
   void initState() {
     super.initState();
+
+    initSpeechToText();
+    initTextToSpeech();
 
     messages.add(const MessageItem(
         isAiMessage: true,
@@ -146,7 +177,10 @@ class _AiAssistPageState extends State<AiAssistPage> {
             heroTag: 'voice_input',
             tooltip: '语音输入',
             onPressed: () {},
-            child: VoiceAction(onSendSounds: _handleVoiceInput),
+            child: VoiceAction(
+              onEnd: _handleVoiceInput,
+              onStart: startListening,
+            ),
           )
         ]),
       ),

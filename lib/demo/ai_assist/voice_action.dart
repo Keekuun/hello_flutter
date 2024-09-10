@@ -8,11 +8,12 @@ import 'audio_recorder/audio_shareData.dart';
 import 'audio_recorder/recorder_data.dart';
 
 class VoiceAction extends StatefulWidget {
-  final Function(SoundsMessageStatus status)? onChanged;
+  final Function(SoundsMessageStatus status)? onStatusChange;
 
-  final Function(String content, int duration)? onSendSounds;
+  final Function(String content, int duration)? onEnd;
+  final void Function()? onStart;
 
-  const VoiceAction({super.key, this.onChanged, this.onSendSounds});
+  const VoiceAction({super.key, this.onStatusChange, this.onEnd, this.onStart});
 
   @override
   State<VoiceAction> createState() => _VoiceActionState();
@@ -28,7 +29,7 @@ class _VoiceActionState extends State<VoiceAction> {
   void initState() {
     super.initState();
     recorder.status.addListener(() {
-      widget.onChanged?.call(recorder.status.value);
+      widget.onStatusChange?.call(recorder.status.value);
     });
   }
 
@@ -47,7 +48,7 @@ class _VoiceActionState extends State<VoiceAction> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               behavior: SnackBarBehavior.floating,
-              content: Text('not have microphone permission'),
+              content: Text('没有麦克风权限'),
             ),
           );
         }
@@ -57,6 +58,7 @@ class _VoiceActionState extends State<VoiceAction> {
 
     showMaskView();
 
+    widget.onStart?.call();
     recorder.beginRec(
       onStateChanged: (state) {},
       onAmplitudeChanged: (amplitude) {},
@@ -64,14 +66,14 @@ class _VoiceActionState extends State<VoiceAction> {
       onCompleted: (path, duration) {
         debugPrint('________  onCompleted: $path , $duration ');
 
-        if (duration.inSeconds < 3) {
+        if (duration.inSeconds < 1) {
           removeMaskView();
           Fluttertoast.showToast(msg: '说话时间太短');
           return;
         }
 
         if (recorder.status.value == SoundsMessageStatus.recording) {
-          widget.onSendSounds?.call(path!, duration.inSeconds);
+          widget.onEnd?.call(path!, duration.inSeconds);
           removeMaskView();
         } else if (recorder.status.value == SoundsMessageStatus.canceling) {
           removeMaskView();
