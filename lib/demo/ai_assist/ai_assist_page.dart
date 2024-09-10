@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:hello_flutter/demo/ai_assist/siliconflow_service.dart';
 import 'package:hello_flutter/demo/ai_assist/voice_action.dart';
 
@@ -15,6 +16,17 @@ class _AiAssistPageState extends State<AiAssistPage> {
   List<Widget> messages = [];
   final ScrollController _scrollController = ScrollController();
 
+  final flutterTts = FlutterTts();
+
+  Future<void> initTextToSpeech() async {
+    await flutterTts.setSharedInstance(true);
+    setState(() {});
+  }
+
+  Future<void> systemSpeak(String content) async {
+    await flutterTts.speak(content);
+  }
+
   void _scrollToBottom() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent + 80,
@@ -23,7 +35,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
     );
   }
 
-  void _askQuestion(String prompt) async {
+  void _handleTextInput(String prompt) async {
     setState(() {
       messages.add(MessageItem(
         isAiMessage: false,
@@ -32,6 +44,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
     });
     _scrollToBottom();
     String response = await SiliconflowAIService().chatMessage(prompt);
+    await systemSpeak(response);
     setState(() {
       messages.add(MessageItem(
         isAiMessage: true,
@@ -40,6 +53,10 @@ class _AiAssistPageState extends State<AiAssistPage> {
     });
 
     _scrollToBottom();
+  }
+
+  void _handleVoiceInput(String content, int duration) async {
+    print('handleVoiceInput: $content, $duration');
   }
 
   @override
@@ -56,6 +73,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
   @override
   void dispose() {
     _scrollController.dispose();
+    flutterTts.stop();
     super.dispose();
   }
 
@@ -93,7 +111,12 @@ class _AiAssistPageState extends State<AiAssistPage> {
                 showModalBottomSheet(
                     context: context,
                     builder: (context) => Container(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: EdgeInsets.only(
+                            left: 16.0,
+                            right: 16.0,
+                            top: 16.0,
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
                           decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
@@ -109,7 +132,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
                               Navigator.pop(context);
                               _scrollToBottom();
                             },
-                            onSubmitted: _askQuestion,
+                            onSubmitted: _handleTextInput,
                           ),
                         ));
               });
@@ -123,7 +146,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
             heroTag: 'voice_input',
             tooltip: '语音输入',
             onPressed: () {},
-            child: const VoiceAction(),
+            child: VoiceAction(onSendSounds: _handleVoiceInput),
           )
         ]),
       ),
