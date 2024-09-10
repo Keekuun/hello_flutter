@@ -80,6 +80,9 @@ dependencies:
   provider: ^6.1.2
   animate_do: ^3.3.4
   flutter_markdown: ^0.7.3+1
+  audio_waveforms: ^1.0.5
+  permission_handler: ^11.3.1
+  flutter_sound: ^9.12.44
 
 # 开发环境依赖的工具包（而不是Flutter应用本身依赖的包）
 dev_dependencies:
@@ -153,6 +156,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/sounds/
 
 # 执行 flutter pub run flutter_launcher_icons:main 生成图片
 flutter_icons:

@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_tts
   gal
   irondash_engine_context
+  permission_handler_windows
   share_plus
   super_native_extensions
   url_launcher_windows

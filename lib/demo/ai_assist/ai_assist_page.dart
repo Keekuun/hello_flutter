@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/demo/ai_assist/siliconflow_service.dart';
+import 'package:hello_flutter/demo/ai_assist/voice_action.dart';
 
 import 'message_item.dart';
 
@@ -122,7 +123,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
             heroTag: 'voice_input',
             tooltip: '语音输入',
             onPressed: () {},
-            child: const Icon(Icons.mic),
+            child: const VoiceAction(),
           )
         ]),
       ),
