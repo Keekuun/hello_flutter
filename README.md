@@ -109,6 +109,11 @@ flutter build appbundle
 + https://github.com/flutter/packages
 + https://github.com/flutter/flutter
 
+## blog
+
++ https://medium.com/flutter-community
++ https://flutter.ducafecat.com/
+
 ## error to fix
 
 + irondash_engine_context - build failed
