@@ -17,10 +17,10 @@ class RecordingMaskOverlayData {
 
   final Color iconFocusTxtColor;
 
-  TextStyle maskTxtStyle = TextStyle(
+  TextStyle maskTxtStyle = const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: const Color(0x8CFFFFFF),
+    color: Color(0x8CFFFFFF),
   );
 
   RecordingMaskOverlayData({
