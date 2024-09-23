@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_flutter/navigator/pageview.dart';
 import 'package:hello_flutter/network/http.dart';
 import 'package:hello_flutter/root_page.dart';
+import 'package:hello_flutter/states/getx/getx_page.dart';
 import 'package:hello_flutter/web/webview.dart';
 
 import 'contents/button.dart';
@@ -185,6 +186,11 @@ final List<Map<String, dynamic>> routesList = [
           title: 'Provider状态管理',
           description: 'Provider状态管理',
           widget: const ProviderDemo()),
+      MyWidget(
+          id: 'Getx',
+          title: 'Getx状态管理',
+          description: 'Getx状态管理',
+          widget: const GetxPage()),
     ],
   },
   {
