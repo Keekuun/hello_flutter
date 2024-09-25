@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 
+import 'embeds/timestamp_embed.dart';
+
 class QuillEditorDemo extends StatefulWidget {
   const QuillEditorDemo({super.key});
 
@@ -45,6 +47,7 @@ class _QuillEditorDemoState extends State<QuillEditorDemo> {
                     searchEmbedMode: SearchEmbedMode.plainText,
                   ),
                   embedBuilders: [
+                    TimeStampEmbedBuilderWidget(),
                     QuillEditorImageEmbedBuilder(
                         configurations: QuillEditorImageEmbedConfigurations(
                             onImageRemovedCallback: (path) async {
@@ -58,6 +61,54 @@ class _QuillEditorDemoState extends State<QuillEditorDemo> {
           ),
           const Divider(height: 1),
           QuillToolbar(
+            configurations: QuillToolbarConfigurations(
+                buttonOptions: QuillSimpleToolbarButtonOptions(
+              customButtons: QuillToolbarCustomButtonOptions(
+                icon: const Icon(Icons.add_alarm_rounded, size: 24),
+                onPressed: () {
+                  _controller.document
+                      .insert(_controller.selection.extentOffset, '\n');
+                  _controller.updateSelection(
+                    TextSelection.collapsed(
+                      offset: _controller.selection.extentOffset + 1,
+                    ),
+                    ChangeSource.local,
+                  );
+
+                  _controller.document.insert(
+                    _controller.selection.extentOffset,
+                    TimeStampEmbed(
+                      DateTime.now().toString(),
+                    ),
+                  );
+
+                  _controller.updateSelection(
+                    TextSelection.collapsed(
+                      offset: _controller.selection.extentOffset + 1,
+                    ),
+                    ChangeSource.local,
+                  );
+
+                  _controller.document
+                      .insert(_controller.selection.extentOffset, ' ');
+                  _controller.updateSelection(
+                    TextSelection.collapsed(
+                      offset: _controller.selection.extentOffset + 1,
+                    ),
+                    ChangeSource.local,
+                  );
+
+                  _controller.document
+                      .insert(_controller.selection.extentOffset, '\n');
+                  _controller.updateSelection(
+                    TextSelection.collapsed(
+                      offset: _controller.selection.extentOffset + 1,
+                    ),
+                    ChangeSource.local,
+                  );
+                },
+              ),
+            )),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -97,6 +148,28 @@ class _QuillEditorDemoState extends State<QuillEditorDemo> {
             ),
           ),
         ], // Expanded
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 100.0),
+        child: FloatingActionButton(
+          onPressed: () async {
+            _controller.document.insert(
+              _controller.selection.extentOffset,
+              TimeStampEmbed(
+                DateTime.now().toString(),
+              ),
+            );
+
+            _controller.updateSelection(
+              TextSelection.collapsed(
+                offset: _controller.selection.extentOffset + 1,
+              ),
+              ChangeSource.silent,
+            );
+          },
+          child: const Icon(Icons.timer),
+        ),
       ),
     );
   }
