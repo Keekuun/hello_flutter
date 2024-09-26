@@ -14,7 +14,7 @@ class WavePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     const count = 13;
-    const centerConut = count ~/ 2;
+    const centerCount = count ~/ 2;
 
     const lineSize = Size(3, 16);
     const lineSpec = 2.0;
@@ -38,12 +38,12 @@ class WavePainter extends CustomPainter {
           Rect.fromCenter(
               center: center,
               width: lineSize.width,
-              height: getWaveHeight(lineSize.height, tempList[centerConut])),
+              height: getWaveHeight(lineSize.height, tempList[centerCount])),
           radius,
         ),
         paint);
 
-    for (var i = 0; i <= centerConut; i++) {
+    for (var i = 0; i <= centerCount; i++) {
       canvas.drawRRect(
           RRect.fromRectAndRadius(
             Rect.fromCenter(
