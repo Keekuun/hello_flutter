@@ -114,6 +114,13 @@ flutter build appbundle
 + https://medium.com/flutter-community
 + https://flutter.ducafecat.com/
 
+## getx
+
++ https://github.com/jonataslaw/getx/blob/master/README.zh-cn.md
++ https://blog.logrocket.com/ultimate-guide-getx-state-management-flutter/#what-is-getx
++ https://github.com/jonataslaw/getx/blob/master/documentation/zh_CN/state_management.md
++ https://github.com/jonataslaw/getx/blob/master/documentation/zh_CN/dependency_management.md
+
 ## error to fix
 
 + irondash_engine_context - build failed
