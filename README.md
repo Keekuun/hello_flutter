@@ -116,6 +116,7 @@ flutter build appbundle
 
 ## getx
 
++ https://blog.logrocket.com/ultimate-guide-getx-state-management-flutter/#what-is-getx
 + https://github.com/jonataslaw/getx/blob/master/README.zh-cn.md
 + https://blog.logrocket.com/ultimate-guide-getx-state-management-flutter/#what-is-getx
 + https://github.com/jonataslaw/getx/blob/master/documentation/zh_CN/state_management.md
