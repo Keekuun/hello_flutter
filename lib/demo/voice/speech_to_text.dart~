@@ -190,8 +190,7 @@ class _SpeechToTextState extends State<SpeechToText> {
 
   @override
   void dispose() {
-    _stopTimer();
-    _speech.stop(); // Stop the timer when the widget is disposed
+    _stopTimer(); // Stop the timer when the widget is disposed
     super.dispose();
   }
 }
