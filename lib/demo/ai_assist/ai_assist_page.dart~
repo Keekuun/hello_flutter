@@ -175,7 +175,7 @@ class _AiAssistPageState extends State<AiAssistPage> {
           ),
           FloatingActionButton(
             heroTag: 'cancel_talk',
-            tooltip: '打断语音播报',
+            tooltip: '打断语音',
             backgroundColor: Colors.blueAccent,
             onPressed: () {
               flutterTts.stop();
