@@ -124,6 +124,8 @@ flutter build appbundle
 
 ## error to fix
 
+由于windows用户名用的中文符号，导致下面的编译异常，需要 系统c盘用户名为英文。
+
 + irondash_engine_context - build failed
 
 ```
