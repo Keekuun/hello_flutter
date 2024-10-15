@@ -14,7 +14,12 @@ class AiAssistPage extends StatefulWidget {
   State<AiAssistPage> createState() => _AiAssistPageState();
 }
 
-class _AiAssistPageState extends State<AiAssistPage> {
+class _AiAssistPageState extends State<AiAssistPage>
+    with AutomaticKeepAliveClientMixin {
+  // 页面保活
+  @override
+  bool get wantKeepAlive => true;
+
   List<Widget> messages = [];
   final ScrollController _scrollController = ScrollController();
 
