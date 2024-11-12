@@ -4,7 +4,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 
 import '../../utils/common.dart';
 
-class MessageItem extends StatelessWidget {
+class MessageItem extends StatefulWidget {
   final bool isAiMessage;
   final String? message;
   final Widget? avatar;
@@ -18,20 +18,26 @@ class MessageItem extends StatelessWidget {
       this.content});
 
   @override
+  State<MessageItem> createState() => _MessageItemState();
+}
+
+class _MessageItemState extends State<MessageItem> {
+  @override
   Widget build(BuildContext context) {
-    var _isMarkdown = isMarkdown(message ?? '');
+    var _isMarkdown = isMarkdown(widget.message ?? '');
 
     return FadeInUp(
       duration: const Duration(milliseconds: 1000),
       child: Align(
-        alignment: isAiMessage ? Alignment.centerLeft : Alignment.centerRight,
+        alignment:
+            widget.isAiMessage ? Alignment.centerLeft : Alignment.centerRight,
         child: Container(
           margin: const EdgeInsets.only(bottom: 16),
           constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width - 32 - 22),
           child: DecoratedBox(
               decoration: BoxDecoration(
-                  color: isAiMessage
+                  color: widget.isAiMessage
                       ? Colors.black12
                       : Colors.black.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(20),
@@ -48,13 +54,13 @@ class MessageItem extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   // _isMarkdown ? Axis.horizontal : Axis.vertical,
                   child: Row(
-                      mainAxisAlignment: isAiMessage
+                      mainAxisAlignment: widget.isAiMessage
                           ? MainAxisAlignment.start
                           : MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        isAiMessage
+                        widget.isAiMessage
                             ? const Icon(
                                 Icons.person,
                                 color: Colors.redAccent,
@@ -65,20 +71,23 @@ class MessageItem extends StatelessWidget {
                                 Icons.person,
                                 size: 32,
                               ),
-                        avatar ?? const SizedBox.shrink(),
-                        SizedBox(width: isAiMessage || avatar != null ? 12 : 0),
-                        content ??
+                        widget.avatar ?? const SizedBox.shrink(),
+                        SizedBox(
+                            width: widget.isAiMessage || widget.avatar != null
+                                ? 12
+                                : 0),
+                        widget.content ??
                             (_isMarkdown
                                 ? Flexible(
                                     child: MarkdownBody(
-                                        data: message!,
+                                        data: widget.message!,
                                         selectable: true,
                                         softLineBreak: true))
                                 : Flexible(
                                     child: Text(
-                                      message ?? '（空）',
+                                      widget.message ?? '（空）',
                                       style: TextStyle(
-                                          color: isAiMessage
+                                          color: widget.isAiMessage
                                               ? Colors.black
                                               : Colors.white70,
                                           fontWeight: FontWeight.w400),

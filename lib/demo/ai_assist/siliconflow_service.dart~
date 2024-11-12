@@ -85,6 +85,8 @@ class SiliconflowAIService {
           break;
         }
       }
+
+      print('[res]: $res');
     } catch (e) {
       yield 'Error: $e';
     }

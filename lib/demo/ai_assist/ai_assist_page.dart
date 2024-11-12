@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:hello_flutter/demo/ai_assist/siliconflow_service.dart';
+import 'package:hello_flutter/demo/ai_assist/stream_message_item.dart';
 import 'package:hello_flutter/demo/ai_assist/voice_action.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -30,6 +31,7 @@ class _AiAssistPageState extends State<AiAssistPage>
 
   Future<void> initTextToSpeech() async {
     await flutterTts.setSharedInstance(true);
+    await flutterTts.awaitSpeakCompletion(true);
   }
 
   Future<void> systemSpeak(String content) async {
@@ -61,30 +63,38 @@ class _AiAssistPageState extends State<AiAssistPage>
 
   void _scrollToBottom() {
     _scrollController.animateTo(
-      _scrollController.position.maxScrollExtent + 80,
+      _scrollController.position.maxScrollExtent,
       duration: const Duration(milliseconds: 1000),
-      curve: Curves.easeOut,
+      curve: Curves.linear,
     );
   }
 
   void _handleTextInput(String prompt) async {
-    setState(() {
-      messages.add(MessageItem(
-        isAiMessage: false,
-        message: prompt,
-      ));
-    });
-    _scrollToBottom();
-    String response = await SiliconflowAIService().chatMessage(prompt);
-    await systemSpeak(response);
-    setState(() {
-      messages.add(MessageItem(
-        isAiMessage: true,
-        message: response,
-      ));
-    });
+    messages.add(MessageItem(
+      isAiMessage: false,
+      message: prompt,
+    ));
+    setState(() {});
+    var messageStream = SiliconflowAIService().chatMessageStream(prompt);
+    messages.add(StreamMessageItem(
+        stream: messageStream,
+        onListen: (data) async {
+          Future.delayed(const Duration(milliseconds: 500), _scrollToBottom);
+        },
+        onEnd: (data) {
+          systemSpeak(data);
+        }));
 
-    _scrollToBottom();
+    // String response = await SiliconflowAIService().chatMessage(prompt);
+    // await systemSpeak(response);
+    // setState(() {
+    //   messages.add(MessageItem(
+    //     isAiMessage: true,
+    //     message: response,
+    //   ));
+    // });
+
+    // _scrollToBottom();
   }
 
   void _handleVoiceInput(String content, int duration) async {
@@ -99,11 +109,11 @@ class _AiAssistPageState extends State<AiAssistPage>
     initSpeechToText();
     initTextToSpeech();
 
-    messages.add(const MessageItem(
-        isAiMessage: true,
-        message: '你好，我是智能AI，你可以向我提问任何问题，例如：\n'
-            '1. 你知道 Flutter 是什么吗?\n'
-            '2. 你知道 Flutter 的作者是谁吗?'));
+    var hello = '你好，我是智能AI，你可以向我询问任何问题，例如：\n'
+        '1. 你知道 Flutter 是什么吗?\n'
+        '2. 你知道 Flutter 的作者是谁吗?';
+    systemSpeak(hello);
+    messages.add(MessageItem(isAiMessage: true, message: hello));
   }
 
   @override
@@ -166,7 +176,6 @@ class _AiAssistPageState extends State<AiAssistPage>
                             // 监听 enter
                             onEditingComplete: () {
                               Navigator.pop(context);
-                              _scrollToBottom();
                             },
                             onSubmitted: _handleTextInput,
                           ),
