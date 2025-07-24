@@ -1,19 +1,14 @@
 # hello_flutter
 
-A new Flutter project.
+study flutter demo， just for fun.
 
-## Getting Started
+## screenshot
 
-This project is a starting point for a Flutter application.
+![home](./assets/screenshot/home.png)
 
-A few resources to get you started if this is your first Flutter project:
+![example](./assets/screenshot/about.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![a](./assets/screenshot/ai.png)
 
 ## Flutter third-party dependencies recommendations
 
