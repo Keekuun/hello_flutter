@@ -6,7 +6,7 @@ study flutter demo， just for fun.
 
 ![home](./assets/screenshot/home.png)
 
-![example](./assets/screenshot/about.png)
+![example](./assets/screenshot/example.png)
 
 ![a](./assets/screenshot/ai.png)
 
