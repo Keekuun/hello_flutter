@@ -1,0 +1,165 @@
+name: Build & Release Flutter Multi-Platform (Decoupled)
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  # ===============================================================
+  # JOB 1: Build & Release Android APK
+  # ===============================================================
+  build-android:
+    name: Build & Release Android
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release APK
+        run: flutter build apk --release
+
+      - name: Rename APK for release
+        run: mv build/app/outputs/flutter-apk/app-release.apk ${{ github.repo.name }}-${{ github.ref_name }}.apk
+
+      - name: Release Android APK
+        uses: softprops/action-gh-release@v2
+        with:
+          # 注意：所有 job 的 name, body, prerelease 等设置应该一致
+          # 以免被后完成的 job 覆盖成不同的值。
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release for ${{ github.ref_name }}. Assets are uploaded as they are built."
+          # 将重命名后的 APK 文件上传
+          files: ${{ github.repo.name }}-${{ github.ref_name }}.apk
+
+  # ===============================================================
+  # JOB 2: Build & Release Windows Installer
+  # ===============================================================
+  build-windows:
+    name: Build & Release Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release for Windows
+        run: flutter build windows --release
+
+      - name: Rename APP for release
+        run: mv build\windows\x64\runner\Release\todo_list.exe ${{ github.repo.name }}-${{ github.ref_name }}.exe
+
+      - name: Release Windows Package
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release for ${{ github.ref_name }}. Assets are uploaded as they are built."
+          files: ${{ github.repo.name }}-${{ github.ref_name }}.exe
+
+  # ===============================================================
+  # JOB 3: Build & Release macOS App
+  # ===============================================================
+  build-macos:
+    name: Build & Release macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0'
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release for macOS
+        run: flutter build macos --release
+
+      - name: Create .dmg file
+        run: |
+          # 变量定义，方便修改
+          APP_NAME="${{ github.repo.name }}" # ⚠️ 请替换成你的应用名
+          APP_BUNDLE_PATH="build/macos/Build/Products/Release/$APP_NAME.app"
+          DMG_VOLUME_NAME="$APP_NAME ${{ github.ref_name }}"
+          DMG_TEMP_NAME="temp-$APP_NAME.dmg"
+          DMG_FINAL_NAME="$APP_NAME-macOS-${{ github.ref_name }}.dmg"
+
+          echo "Creating DMG file..."
+          # 1. 创建一个临时的、可读写的磁盘映像，大小设置得比App大一些（例如150MB）
+          hdiutil create -size 150m -fs HFS+ -volname "$DMG_VOLUME_NAME" "$DMG_TEMP_NAME"
+
+          # 2. 挂载这个临时磁盘映像
+          hdiutil attach "$DMG_TEMP_NAME"
+
+          # 3. 将构建好的 .app 复制到挂载的卷中
+          cp -R "$APP_BUNDLE_PATH" "/Volumes/$DMG_VOLUME_NAME/"
+
+          # 4. (可选，但强烈推荐) 创建一个指向 /Applications 目录的快捷方式
+          ln -s /Applications "/Volumes/$DMG_VOLUME_NAME/Applications"
+
+          # 5. 卸载磁盘映像
+          hdiutil detach "/Volumes/$DMG_VOLUME_NAME"
+
+          # 6. 将临时磁盘映像转换为最终的、压缩的、只读的 .dmg 文件
+          hdiutil convert "$DMG_TEMP_NAME" -format UDZO -o "$DMG_FINAL_NAME"
+
+          # 7. 清理临时文件
+          rm "$DMG_TEMP_NAME"
+
+          echo "DMG created at $DMG_FINAL_NAME"
+
+      - name: Release macOS Package
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release for ${{ github.ref_name }}. Assets are uploaded as they are built."
+          # 更新 files 参数以匹配 .dmg 文件名
+          files: ${{ github.repo.name }}-macOS-${{ github.ref_name }}.dmg
+
+  # ===============================================================
+  # JOB 4: Build & Release iOS App (Simulator)
+  # ===============================================================
+  build-ios:
+    name: Build & Release iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.0' # 建议与你其他 job 保持一致
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build release for iOS (no codesign)
+        run: flutter build ios --release --no-codesign
+
+      - name: Archive .app into a .zip file
+        # 1. 进入构建产物目录
+        # 2. 使用 zip 命令将 Runner.app 目录递归压缩成一个 .zip 文件
+        #    -r 表示递归 (recursive)
+        run: |
+          zip -r ${{ github.repo.name }}-iOS-${{ github.ref_name }}.zip build/ios/iphoneos/Runner.app
+
+      - name: Release iOS Package
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Release ${{ github.ref_name }}"
+          body: "Automated release for ${{ github.ref_name }}. Assets are uploaded as they are built."
+          # 现在上传的是我们刚刚创建的 .zip 文件，而不是 .app 目录
+          files: ${{ github.repo.name }}-iOS-${{ github.ref_name }}.zip
