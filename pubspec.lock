@@ -373,10 +373,10 @@ packages:
     dependency: transitive
     description:
       name: file_picker
-      sha256: "1bbf65dd997458a08b531042ec3794112a6c39c07c37ff22113d2e7e4f81d4e4"
+      sha256: "09b474c0c8117484b80cbebc043801ff91e05cfbd2874d512825c899e1754694"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.2.1"
+    version: "9.2.3"
   file_selector_linux:
     dependency: transitive
     description:
@@ -1129,34 +1129,10 @@ packages:
     dependency: transitive
     description:
       name: pointer_interceptor
-      sha256: "57210410680379aea8b1b7ed6ae0c3ad349bfd56fe845b8ea934a53344b9d523"
+      sha256: adf7a637f97c077041d36801b43be08559fd4322d2127b3f20bb7be1b9eebc22
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.10.1+2"
-  pointer_interceptor_ios:
-    dependency: transitive
-    description:
-      name: pointer_interceptor_ios
-      sha256: a6906772b3205b42c44614fcea28f818b1e5fdad73a4ca742a7bd49818d9c917
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.10.1"
-  pointer_interceptor_platform_interface:
-    dependency: transitive
-    description:
-      name: pointer_interceptor_platform_interface
-      sha256: "0597b0560e14354baeb23f8375cd612e8bd4841bf8306ecb71fcd0bb78552506"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.10.0+1"
-  pointer_interceptor_web:
-    dependency: transitive
-    description:
-      name: pointer_interceptor_web
-      sha256: "7a7087782110f8c1827170660b09f8aa893e0e9a61431dbbe2ac3fc482e8c044"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.10.2+1"
+    version: "0.9.3+7"
   pool:
     dependency: transitive
     description:
@@ -1200,10 +1176,11 @@ packages:
   quill_html_editor:
     dependency: "direct main"
     description:
-      name: quill_html_editor
-      sha256: "7f46ec06a41b8ec30910afc219f1a447cd2e872614cc3a34ef16600043163f19"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: a171f44832ac88f2261b5d7e2cf5866a40012cfe
+      url: "https://github.com/salman-houzeo/quill_html_editor.git"
+    source: git
     version: "2.2.8"
   quill_native_bridge:
     dependency: transitive
@@ -1742,10 +1719,10 @@ packages:
     dependency: transitive
     description:
       name: webview_flutter_platform_interface
-      sha256: d937581d6e558908d7ae3dc1989c4f87b786891ab47bb9df7de548a151779d8d
+      sha256: f0dc2dc3a2b1e3a6abdd6801b9355ebfeb3b8f6cde6b9dc7c9235909c4a1f147
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.10.0"
+    version: "2.13.1"
   webview_flutter_wkwebview:
     dependency: transitive
     description:
